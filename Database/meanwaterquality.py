@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_excel("Water_Quality_Rivers_2017.xlsx")
+df = pd.read_excel("Water_Quality_Rivers_2016.xlsx")
 for i in df.index:
     try:
         df['Temperature mean'][i] = float((df['Temperature min'][i] + df['Temperature max'][i])/2)
@@ -19,4 +19,4 @@ for i in df.index:
         df['Nitrate mean'][i] = -1
         df['Faecal Coliform mean'][i] = -1
         df['Total Coliform mean'][i] = -1
-df.to_excel("output17.xlsx")
+df.to_excel("output16.xlsx")
