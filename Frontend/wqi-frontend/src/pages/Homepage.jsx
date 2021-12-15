@@ -5,7 +5,7 @@ function Homepage() {
     <div>
       <Hero />
       <div className="content-container">
-        <div className="row">
+        <div className="bruhRow">
           <div className="img-container">
             <img src="" alt="image here" />
           </div>
@@ -15,10 +15,10 @@ function Homepage() {
               Get a clear view of future statistics and graphs of rivers in
               India.
             </p>
-            <button>Try it out!</button>
+            <button className="blu-btn">Try it out!</button>
           </div>
         </div>
-        <div className="row">
+        <div className="bruhRow">
           <div className="img-container">
             <img src="" alt="image here" />
           </div>
@@ -28,7 +28,7 @@ function Homepage() {
               prevent pollution?
             </h1>{" "}
             <p>Some random steps idk, read the article from the link below</p>
-            <button>Learn More!</button>
+            <button className="blu-btn">Learn More!</button>
           </div>
         </div>
       </div>
