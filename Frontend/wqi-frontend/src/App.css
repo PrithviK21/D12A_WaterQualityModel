@@ -10,28 +10,25 @@
 body {
   background-color: #dbe6fd;
 }
-.normie-navbar {
-  height: 120px;
+.normie-navbar,
+.navbar {
   background: #2d46b9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1em;
-}
-.normie-navbar span {
-  padding-left: 1em;
-  font-size: 3em;
+  padding: 1em;
   color: white;
 }
+
 .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-brand {
   font-weight: 700;
-  font-size: 2em;
+  font-size: 2.5em;
 }
-.header-links {
+/* .header-links {
   list-style: none;
   display: flex;
   width: 50vw;
@@ -40,19 +37,25 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-}
-.header-links li {
+} */
+.header-links li,
+.nav-item {
   border-radius: 20px;
   transition: 0.1s ease;
 }
 
-.header-links li:hover {
-  padding: 0.5em 1em;
+.header-links li:hover,
+.nav-item:hover {
+  padding: 0.2em 0.5em;
   transition: 0.2s ease;
   background-color: rgba(0, 0, 0, 0.637);
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
   color: white;
 }
+.navbar-nav {
+  align-items: center;
+}
+
 a {
   text-decoration: none;
   color: white;

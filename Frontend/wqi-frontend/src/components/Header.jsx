@@ -1,14 +1,6 @@
 import React from "react";
-// import {
-//   Collapse,
-//   Navbar,
-//   NavbarToggler,
-//   NavbarBrand,
-//   Nav,
-//   NavItem,
-//   NavLink,
-// } from "reactstrap";
-import { Navbar, Nav } from 'react-bootstrap';
+
+import { Navbar, Nav } from "react-bootstrap";
 
 function Header() {
   return (
@@ -35,7 +27,7 @@ function Header() {
     //   </nav>
     // </header>
 
-    <Navbar bg="dark" expand="md">
+    <Navbar variant="dark" expand="md">
       <Navbar.Brand href="/">Rivers be dyin</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -55,7 +47,6 @@ function Header() {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-
   );
 }
 
