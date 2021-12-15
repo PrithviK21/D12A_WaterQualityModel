@@ -1,59 +1,61 @@
 import React from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+// import {
+//   Collapse,
+//   Navbar,
+//   NavbarToggler,
+//   NavbarBrand,
+//   Nav,
+//   NavItem,
+//   NavLink,
+// } from "reactstrap";
+import { Navbar, Nav } from 'react-bootstrap';
+
 function Header() {
   return (
-    <header>
-      <nav className="normie-navbar">
-        <span>Rivers be dyin</span> {/* will become image*/}
-        <ul className="header-links">
-          <a href="/">
-            <li>HOME</li>
-          </a>
-          <a href="/">
-            <li>VISUALISATION</li>
-          </a>
-          <a href="/">
-            <li>PREVENTION</li>
-          </a>
-          <a href="/">
-            <li>DATASET</li>
-          </a>
-          <a href="/">
-            <li>ABOUT US</li>
-          </a>
-        </ul>
-      </nav>
-    </header>
-    // <div>
-    //   <Navbar dark color="dark" expand="md">
-    //     <NavbarBrand>Rivers be dyin</NavbarBrand>
-    //     <NavbarToggler onClick={function noRefCheck() {}} />
-    //     <Collapse navbar>
-    //       <Nav className="me-auto" navbar>
-    //         <NavItem>
-    //           <NavLink href="/">VISUALISATION</NavLink>
-    //         </NavItem>
-    //         <NavItem>
-    //           <NavLink href="">PREVENTION</NavLink>
-    //         </NavItem>
-    //         <NavItem>
-    //           <NavLink href="">DATASET</NavLink>
-    //         </NavItem>
-    //         <NavItem>
-    //           <NavLink href="">ABOUT US</NavLink>
-    //         </NavItem>
-    //       </Nav>
-    //     </Collapse>
-    //   </Navbar>
-    // </div>
+    // <header>
+    //   <nav className="normie-navbar">
+    //     <span>Rivers be dyin</span> {/* will become image*/}
+    //     <ul className="header-links">
+    //       <a href="/">
+    //         <li>HOME</li>
+    //       </a>
+    //       <a href="/">
+    //         <li>VISUALISATION</li>
+    //       </a>
+    //       <a href="/">
+    //         <li>PREVENTION</li>
+    //       </a>
+    //       <a href="/">
+    //         <li>DATASET</li>
+    //       </a>
+    //       <a href="/">
+    //         <li>ABOUT US</li>
+    //       </a>s
+    //     </ul>
+    //   </nav>
+    // </header>
+
+    <Navbar className="normie-navbar" bg="dark" expand="md">
+      <Navbar.Brand href="/">Rivers be dyin</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto header-links">
+          <Nav.Item>
+            <Nav.Link href="/">VISUALISATION</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="">PREVENTION</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="">DATASET</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="">ABOUT US</Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+
   );
 }
 
