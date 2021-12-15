@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+  font-family: "Roboto";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  height: 120px;
+  background: #2d46b9;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 0 1em;
+}
+.navbar > span {
+  padding-left: 1em;
+  font-size: 60px;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.header-links {
+  list-style: none;
+  display: flex;
+  width: 50vw;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+.header-links li {
+  border-radius: 20px;
+  transition: 0.1s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-links li:hover {
+  padding: 0.5em 1em;
+  transition: 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.637);
+  transform: scale(1.1);
+}
+a:visited {
+  color: white;
+}
+.hero-container {
+  height: 100vh;
+  background-image: url(./assets/pollution2cd.png);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-text {
+  color: white;
+  font-size: 6em;
+}
+.content-container {
+  background-color: #dbe6fd;
+}
+
+.row {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 3px black solid;
+}
+
+.row:nth-child(2) {
+  flex-direction: row-reverse;
+}
+.text-container {
+  background-color: #b3cbff80;
+  padding: 4em;
+  border-radius: 50px 20px 50px 20px;
+}
+.text-container > h1 {
+  font-size: 4em;
+  padding-bottom: 0.5em;
+}
+
+.text-container > p {
+  padding-bottom: 1em;
+}
+.big-text {
+  font-weight: 400;
+  font-style: italic;
+  color: #1e3163;
+}
+
+button {
+  transition: 0.5s ease;
+  background-color: #2d46b9;
+  color: white;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 20px;
+  margin: 1em 0;
+  cursor: pointer;
+}
+
+button:hover {
+  transition: ease 0.25s;
+  background-color: #273d9e;
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 5px 0 black;
+}
+
+button:active {
+  transition: 0.1s ease;
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+footer {
+  height: 10vh;
+  background-color: #1e3163;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
 }
