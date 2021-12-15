@@ -35,11 +35,11 @@ function Header() {
     //   </nav>
     // </header>
 
-    <Navbar className="normie-navbar" bg="dark" expand="md">
+    <Navbar bg="dark" expand="md">
       <Navbar.Brand href="/">Rivers be dyin</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto header-links">
+        <Nav className="me-auto">
           <Nav.Item>
             <Nav.Link href="/">VISUALISATION</Nav.Link>
           </Nav.Item>
