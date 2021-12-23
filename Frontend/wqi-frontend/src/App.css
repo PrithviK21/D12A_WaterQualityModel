@@ -81,12 +81,23 @@ a:active {
   background-color: #dbe6fd;
 }
 
+.bruhcont {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
 .bruhRow {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 3px black solid;
+  /* border-bottom: 3px black solid; */
+}
+.bruhRow-half {
+  text-align: center;
+  height: 50vh;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .bruhRow:nth-child(2) {
@@ -94,7 +105,7 @@ a:active {
 }
 .text-container {
   background-color: #b3cbff80;
-  padding: 4em;
+  padding: 3em;
   border-radius: 50px 20px 50px 20px;
 }
 .text-container > h1 {
@@ -137,21 +148,66 @@ a:active {
 
 .menu-container {
   height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 .menu-item {
-  width: 60%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   color: white;
+}
+
+.prevent-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-img {
+  object-fit: contain;
 }
 .card-body {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.39);
+  background-color: rgba(0, 0, 0, 0.623);
+}
+.card-subtitle {
+  color: white !important;
+}
+.map-container {
+  height: 100vh;
+  text-align: center;
+}
+.map-placeholder {
+  height: 80vh;
+  width: 80vw;
+  margin: 1em auto;
+  background-color: black;
+}
+.graph-placeholder {
+  height: 70vh;
+  background-color: black;
+}
+.info-container {
+  background-color: rgb(78, 78, 78);
+  height: 75vh;
+}
+.select-search {
+  margin: 2em auto;
+  width: 60%;
 }
 footer {
   height: 10vh;
@@ -175,23 +231,29 @@ footer {
     font-size: 3rem;
   }
 
-  .bruhRow {
-    flex-direction: column;
-    text-align: center;
-  }
-  .bruhRow:nth-child(2) {
-    flex-direction: column;
-  }
-
   .text-container {
+    margin: auto;
     max-width: 80%;
     border-radius: 20px;
   }
   .text-container h1 {
     font-size: 2rem;
   }
-  .menu-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: max-content;
+  .bruhcont {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .card-container {
+    width: 80%;
+    margin: 1em auto;
+  }
+  .map-container {
+    margin: 1em auto;
+    height: auto;
+  }
+  .map-placeholder {
+    width: 100%;
+    height: 50vh;
   }
 }
