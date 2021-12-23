@@ -28,7 +28,7 @@ function Header() {
     // </header>
 
     <Navbar variant="dark" expand="md">
-      <Navbar.Brand href="/">Rivers be dyin</Navbar.Brand>
+      <Navbar.Brand href="/">Rivers shouldn't be dying</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">

@@ -11,9 +11,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Homepage /> */}
+      <Homepage />
       {/* <VisMenu /> */}
-      <Heatmap />
+      {/* <Heatmap /> */}
       {/* <LineChart /> */}
       {/* <Prevention /> */}
       <Footer />
