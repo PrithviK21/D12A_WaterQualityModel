@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <Header />
       {/* <Homepage /> */}
-      <VisMenu />
-      {/* <Heatmap /> */}
+      {/* <VisMenu /> */}
+      <Heatmap />
       {/* <LineChart /> */}
       {/* <Prevention /> */}
       <Footer />
