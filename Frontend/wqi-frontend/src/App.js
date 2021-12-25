@@ -13,8 +13,8 @@ function App() {
       <Header />
       {/* <Homepage /> */}
       {/* <VisMenu /> */}
-      <Heatmap />
-      {/* <LineChart /> */}
+      {/* <Heatmap /> */}
+      <LineChart />
       {/* <Prevention /> */}
       <Footer />
     </div>
