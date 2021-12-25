@@ -1,2 +1,5 @@
 /Database/Excel
 /Database/pdfs
+Backend/chart/chartjs/migrations
+Backend/chart/chartjs/__pycache__
+Backend/chart/chart/__pycache__
