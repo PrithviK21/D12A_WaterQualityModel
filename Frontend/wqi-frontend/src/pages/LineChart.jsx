@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import SelectSearch, { fuzzySearch } from "react-select-search";
 import "../select-search.css";
-// import Linegraph from "../Linegraph"
 import rivers from "../rivers";
 import axios from "axios";
 import createPlotlyComponent from "react-plotly.js/factory";
+
 const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
+
 function LineChart() {
   const [riverData, setRiverData] = useState([]);
   const options = rivers;

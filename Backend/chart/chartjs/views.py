@@ -63,6 +63,8 @@ class HeatMapData(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
+        year = int(request.GET.get('year'))
+        print(type(year))
         def capitalizeFirst(state):
             state_new = ''
             for word in state.split():
@@ -72,24 +74,37 @@ class HeatMapData(APIView):
 
         df = pd.read_excel("chartjs/templates/chartjs/wqilimitstate.xlsx")
         india_states = json.load(open("chartjs/templates/chartjs/states_india.geojson"))
-        df['STATE'] = df["STATE"].apply(lambda x: capitalizeFirst(x) )
+
+        df_year =pd.DataFrame(columns=['STATE', 'ID', 'WQI'])
+        df_year['STATE'] = df['STATE'].unique()
+        
         state_id_map = {}
         for feature in india_states["features"]:
             feature["id"] = feature["properties"]["state_code"]
             state_id_map[feature["properties"]["st_nm"]] = feature["id"]
-        df["ID"] = df["STATE"].apply(lambda x: state_id_map[x])
-        print(df.head())
-        id = np.array(df[df['YEAR'] == 2018]['ID'])
-        wqi = np.array(df[df['YEAR'] == 2018]['WQI'])
-        state = np.array(df[df['YEAR'] == 2018]['STATE'])
-        # year = np.array(df['YEAR'])
+        df_year["ID"] = df_year["STATE"].apply(lambda x: state_id_map[capitalizeFirst(x)])
+
+        def predict_wqi(state):
+            model = joblib.load(f'chartjs/templates/chartjs/state_models/{state}.pkl', mmap_mode='r')
+            return model.predict([[year]])[0]
+
+        df_year['WQI'] = df_year['STATE'].apply(lambda x: predict_wqi(x))
+
+        id = np.array(df_year['ID'])
+        wqi = np.array(df_year['WQI'])
+        state = np.array(df_year['STATE'])
+
+        print(id, wqi, state)
+
         data = {
             "locations": id,
             "z": wqi,
             "text": state,
             "geojson": india_states
         }
-        return Response(data) 
+
+        return Response(data)
+
 
 
 class CompareViews(View):
