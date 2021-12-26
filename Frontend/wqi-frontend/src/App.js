@@ -7,15 +7,17 @@ import VisMenu from "./pages/VisMenu";
 import Heatmap from "./pages/Heatmap";
 import Prevention from "./pages/Prevention";
 import LineChart from "./pages/LineChart";
+import BarChart from "./pages/BarChart";
 function App() {
   return (
     <div className="App">
       <Header />
-      <Homepage />
+      {/* <Homepage /> */}
       {/* <VisMenu /> */}
-      <Heatmap />
+      {/* <Heatmap /> */}
       {/* <LineChart /> */}
       {/* <Prevention /> */}
+      <BarChart />
       <Footer />
     </div>
   );

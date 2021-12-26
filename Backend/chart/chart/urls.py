@@ -27,5 +27,6 @@ urlpatterns = [
     path('compare/', views.CompareViews.as_view()),
     path('compareapi', views.CompareData.as_view()),
     path('modelriver/', views.ModelRiverViews.as_view()),
-    path('modelriverapi', views.ModelRiverData.as_view())
+    path('modelriverapi', views.ModelRiverData.as_view()),
+    path('stateapi/', views.StateRiverData.as_view()),
 ]

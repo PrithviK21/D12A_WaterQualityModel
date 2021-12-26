@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import SelectSearch, { fuzzySearch } from "react-select-search";
 import "../select-search.css";
-import rivers from "../rivers";
+import states from "../states";
 import axios from "axios";
 import createPlotlyComponent from "react-plotly.js/factory";
 
@@ -10,8 +10,10 @@ const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
 
 function LineChart() {
-  const [riverData, setRiverData] = useState([]);
-  const options = rivers;
+  const [stateData, setStateData] = useState([]);
+  const options = states;
+
+  
 
   const handleChange = (val) => {
     console.log(val);
@@ -27,12 +29,12 @@ function LineChart() {
     //   refreshPage();
     // });
 
-    const endpoint = "http://127.0.0.1:8000/api/?rivername=" + val;
+    const endpoint = "http://127.0.0.1:8000/stateapi/?statename=" + val;
     axios
       .get(endpoint)
       .then((response) => {
         const data = response.data;
-        setRiverData(data);
+        setStateData(data);
         console.log(data);
       })
       .catch((e) => {
@@ -79,13 +81,20 @@ function LineChart() {
               <Plot
                 data={[
                   {
-                    x: riverData.x,
-                    y: riverData.y,
-                    type: "line",
-                    marker: { color: "red" },
+                    x: stateData.x,
+                    y: stateData.y,
+                    type: "bar",
+                    marker: {
+                      color: [
+                        "#A3E4DB",
+                        "#FED1EF",
+                        "#1C6DD0",
+                        "#548CFF",
+                      ],
+                    },
                   },
                 ]}
-                layout={{ width: 900, height: 500, title: riverData.name }}
+                layout={{ width: 500, height: 500, title: stateData.name }}
               />
             </div>
           </Col>

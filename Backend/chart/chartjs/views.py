@@ -52,6 +52,31 @@ class ChartData(APIView):
         return Response(data)
 
 
+class StateRiverData(APIView):
+    authentication_classes = []
+    permission_classes = []
+    def get(self, request, format = None):
+        statename = request.GET.get('statename')
+        print(statename)
+        dfstate = pd.read_excel("chartjs/templates/chartjs/wqilimitstate.xlsx")
+        dfx = dfstate[dfstate['STATE'] == statename] 
+        wqirange = []
+        wqirange.append(len(dfx[dfx['WQI'] <= 25]) + len(dfx[0 < dfx['WQI']]))
+        wqirange.append(len(dfx[dfx['WQI'] <= 50]) + len(dfx[25 < dfx['WQI']]))
+        wqirange.append(len(dfx[dfx['WQI'] <= 70]) + len(dfx[50 < dfx['WQI']]))
+        wqirange.append(len(dfx[dfx['WQI'] <= 90]) + len(dfx[70 < dfx['WQI']]))
+        wqirange.append(len(dfx[dfx['WQI'] <= 90]) + len(dfx[100 < dfx['WQI']]))
+        print(wqirange)
+        trace1 = {
+            'type': 'bar',
+            'x': ['0-25', '25-50', '50-70', '70-90', '90-100'],
+            'y': wqirange,
+            'name': statename,
+        }
+        data = trace1
+        return Response(data)
+
+
 
 class HeatmapViews(View):
     def get(self, request, *args, **kwargs):
