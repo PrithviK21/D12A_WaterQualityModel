@@ -8,6 +8,7 @@ import Heatmap from "./pages/Heatmap";
 import Prevention from "./pages/Prevention";
 import LineChart from "./pages/LineChart";
 import BarChart from "./pages/BarChart";
+
 function App() {
   return (
     <div className="App">
@@ -16,8 +17,8 @@ function App() {
       {/* <VisMenu /> */}
       {/* <Heatmap /> */}
       {/* <LineChart /> */}
-      {/* <Prevention /> */}
       <BarChart />
+      {/* <Prevention /> */}
       <Footer />
     </div>
   );

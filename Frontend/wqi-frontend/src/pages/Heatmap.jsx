@@ -10,6 +10,7 @@ const Plot = createPlotlyComponent(Plotly);
 
 function Heatmap() {
   const [heatmapData, setHeatmapData] = useState([])
+  const [year, setYear] = useState('')
   const options = []
 
   for (let i = 2008; i <= 2030; i++) {
@@ -18,20 +19,23 @@ function Heatmap() {
 
   const handleChange = (val) => {
     console.log(val);
+    setYear(val);
+  };
 
-    const endpoint = "http://127.0.0.1:8000/heatmapapi/?year=" + val;
+  useEffect(() => {
+    const endpoint = "http://127.0.0.1:8000/heatmapapi/?year=" + year;
     axios
       .get(endpoint)
       .then((response) => {
         const data = response.data;
         console.log(data)
         setHeatmapData(data)
-        console.log(heatmapData.z, heatmapData.locations);
+        // console.log(heatmapData.z, heatmapData.locations);
       })
       .catch((e) => {
         console.log(e);
       });
-  };
+  }, [year])
 
   return (
     <div>
@@ -45,6 +49,7 @@ function Heatmap() {
               search
               filterOptions={fuzzySearch}
               onChange={handleChange}
+              value={year}
             />
           </Col>
         </Row>
@@ -74,7 +79,7 @@ function Heatmap() {
             ]
           }
           layout={{
-            title: 'WQI by State',
+            title: `WQI by State for ${year}`,
             geo: {
               fitbounds: "locations",
               visible: false,

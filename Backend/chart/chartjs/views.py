@@ -52,30 +52,51 @@ class ChartData(APIView):
         return Response(data)
 
 
-class StateRiverData(APIView):
+class CountWQIData(APIView):
     authentication_classes = []
     permission_classes = []
     def get(self, request, format = None):
-        statename = request.GET.get('statename')
-        print(statename)
-        dfstate = pd.read_excel("chartjs/templates/chartjs/wqilimitstate.xlsx")
-        dfx = dfstate[dfstate['STATE'] == statename] 
-        wqirange = []
-        wqirange.append(len(dfx[dfx['WQI'] <= 25]) + len(dfx[0 < dfx['WQI']]))
-        wqirange.append(len(dfx[dfx['WQI'] <= 50]) + len(dfx[25 < dfx['WQI']]))
-        wqirange.append(len(dfx[dfx['WQI'] <= 70]) + len(dfx[50 < dfx['WQI']]))
-        wqirange.append(len(dfx[dfx['WQI'] <= 90]) + len(dfx[70 < dfx['WQI']]))
-        wqirange.append(len(dfx[dfx['WQI'] <= 90]) + len(dfx[100 < dfx['WQI']]))
-        print(wqirange)
-        trace1 = {
-            'type': 'bar',
-            'x': ['0-25', '25-50', '50-70', '70-90', '90-100'],
-            'y': wqirange,
-            'name': statename,
-        }
-        data = trace1
-        return Response(data)
+        # statename = request.GET.get('statename')
+        # print(statename)
+        # dfstate = pd.read_excel("chartjs/templates/chartjs/wqilimitstate.xlsx")
+        # dfx = dfstate[dfstate['STATE'] == statename] 
+        # print(dfx[['STATE', 'YEAR', 'WQI']])
+        # wqirange = []
+        # wqirange.append(len(dfx[dfx['WQI'] <= 25]) + len(dfx[0 < dfx['WQI']]))
+        # wqirange.append(len(dfx[dfx['WQI'] <= 50]) + len(dfx[25 < dfx['WQI']]))
+        # wqirange.append(len(dfx[dfx['WQI'] <= 70]) + len(dfx[50 < dfx['WQI']]))
+        # wqirange.append(len(dfx[dfx['WQI'] <= 90]) + len(dfx[70 < dfx['WQI']]))
+        # wqirange.append(len(dfx[dfx['WQI'] <= 100]) + len(dfx[90 < dfx['WQI']]))
+        # print(wqirange)
+        # trace1 = {
+        #     'type': 'bar',
+        #     'x': ['0-25', '25-50', '50-70', '70-90', '90-100'],
+        #     'y': wqirange,
+        #     'name': statename,
+        # }
+        # data = trace1
+        # return Response(data)
+        year = int(request.GET.get('year'))
+        print(year)
+        df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
 
+        def assignClass(wqi):
+            if wqi <= 25:
+                return 'E'
+            elif wqi <= 50:
+                return 'D'
+            elif wqi <= 70:
+                return 'C'
+            elif wqi <= 90:
+                return 'B'
+            else:
+                return 'A'
+        
+        df_year = df[df['YEAR'] == year]
+        df_year['CLASS'] = df_year['WQI'].apply(lambda x: assignClass(x))
+        print(df_year)
+        x = df_year['CLASS'].sort_values(axis=0)
+        return Response(x)
 
 
 class HeatmapViews(View):

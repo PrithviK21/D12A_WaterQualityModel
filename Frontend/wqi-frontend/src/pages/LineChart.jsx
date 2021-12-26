@@ -11,10 +11,12 @@ const Plot = createPlotlyComponent(Plotly);
 
 function LineChart() {
   const [riverData, setRiverData] = useState([]);
+  const [river, setRiver] = useState('');
   const options = rivers;
 
   const handleChange = (val) => {
     console.log(val);
+    setRiver(val);
 
     // axios({
     //   method: 'get',
@@ -27,17 +29,7 @@ function LineChart() {
     //   refreshPage();
     // });
 
-    const endpoint = "http://127.0.0.1:8000/api/?rivername=" + val;
-    axios
-      .get(endpoint)
-      .then((response) => {
-        const data = response.data;
-        setRiverData(data);
-        console.log(data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+
   };
 
   // axios.get(endpoint)
@@ -59,6 +51,20 @@ function LineChart() {
 
   //       Plotly.newPlot(graphplaceholder, data, layout);
 
+  useEffect(() => {
+    const endpoint = "http://127.0.0.1:8000/api/?rivername=" + river;
+    axios
+      .get(endpoint)
+      .then((response) => {
+        const data = response.data;
+        setRiverData(data);
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [river])
+
   return (
     <div>
       <Container className="map-container">
@@ -70,6 +76,7 @@ function LineChart() {
               search
               filterOptions={fuzzySearch}
               onChange={handleChange}
+              value={river}
             />
           </Col>
         </Row>

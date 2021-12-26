@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import SelectSearch, { fuzzySearch } from "react-select-search";
 import "../select-search.css";
-import states from "../states";
+// import states from "../states";
 import axios from "axios";
 import createPlotlyComponent from "react-plotly.js/factory";
 
@@ -10,13 +10,17 @@ const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
 
 function LineChart() {
-  const [stateData, setStateData] = useState([]);
-  const options = states;
+  const [wqiData, setWqiData] = useState([]);
+  const [year, setYear] = useState('');
+  const options = [];
 
-  
+  for (let i = 2008; i <= 2019; i++) {
+    options.push({ name: i, value: i })
+  }
 
   const handleChange = (val) => {
     console.log(val);
+    setYear(val);
 
     // axios({
     //   method: 'get',
@@ -29,37 +33,22 @@ function LineChart() {
     //   refreshPage();
     // });
 
-    const endpoint = "http://127.0.0.1:8000/stateapi/?statename=" + val;
+
+  };
+
+  useEffect(() => {
+    const endpoint = "http://127.0.0.1:8000/countwqiapi/?year=" + year;
     axios
       .get(endpoint)
       .then((response) => {
         const data = response.data;
-        setStateData(data);
+        setWqiData(data);
         console.log(data);
       })
       .catch((e) => {
         console.log(e);
       });
-  };
-
-  // axios.get(endpoint)
-  //   .then((response) => {
-  //     const data = response.data
-  //     console.log(data)
-  //   })
-  //   .catch(e => {
-  //     console.log(e)
-  //   })
-
-  //   var trace1 = data.trace1;
-  //   var data = trace1;
-
-  //       var layout = {
-  //           width: 500,
-  //           height: 500,
-  //       };
-
-  //       Plotly.newPlot(graphplaceholder, data, layout);
+  }, [year])
 
   return (
     <div>
@@ -68,10 +57,11 @@ function LineChart() {
           <Col>
             <SelectSearch
               options={options}
-              placeholder="Choose your river"
+              placeholder="Choose your year"
               search
               filterOptions={fuzzySearch}
               onChange={handleChange}
+              value={year}
             />
           </Col>
         </Row>
@@ -81,20 +71,11 @@ function LineChart() {
               <Plot
                 data={[
                   {
-                    x: stateData.x,
-                    y: stateData.y,
-                    type: "bar",
-                    marker: {
-                      color: [
-                        "#A3E4DB",
-                        "#FED1EF",
-                        "#1C6DD0",
-                        "#548CFF",
-                      ],
-                    },
-                  },
+                    x: wqiData,
+                    type: "histogram",
+                  }
                 ]}
-                layout={{ width: 500, height: 500, title: stateData.name }}
+                layout={{ width: 500, height: 500, title: `WQI distribution for ${year}` }}
               />
             </div>
           </Col>
