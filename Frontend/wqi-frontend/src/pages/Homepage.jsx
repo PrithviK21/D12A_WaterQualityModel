@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "../components/Hero";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   return (
@@ -20,7 +21,9 @@ function Homepage() {
                 Get a clear view of future statistics and graphs of rivers in
                 India.
               </p>
-              <button className="blu-btn">Try it out!</button>
+              <Link to="/vis">
+                <button className="blu-btn">Try it out!</button>
+              </Link>
             </div>
           </Col>
         </Row>
@@ -35,7 +38,9 @@ function Homepage() {
                 prevent pollution?
               </h1>{" "}
               <p>Some random steps idk, read the article from the link below</p>
-              <button className="blu-btn">Learn More!</button>
+              <Link to="/prevention">
+                <button className="blu-btn">Learn More!</button>
+              </Link>
             </div>
           </Col>
         </Row>

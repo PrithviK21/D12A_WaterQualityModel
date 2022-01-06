@@ -3,6 +3,7 @@ import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import map from "../assets/indiamap.jpg";
 import lineimg from "../assets/line.png";
 import barimg from "../assets/barchart.jpg";
+import { Link } from "react-router-dom";
 function VisMenu() {
   return (
     <div>
@@ -16,7 +17,9 @@ function VisMenu() {
                 <Card.Subtitle className="mb-2" tag="h6">
                   A heatmap of India, showing WQIs per state
                 </Card.Subtitle>
-                <Button>Go!</Button>
+                <Link to="/heatmap">
+                  <Button>Go!</Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
@@ -28,7 +31,9 @@ function VisMenu() {
                 <Card.Subtitle className="mb-2 text-muted" tag="h6">
                   Visualise the trends in WQI for one or more rivers
                 </Card.Subtitle>
-                <Button>Go!</Button>
+                <Link to="/line">
+                  <Button>Go!</Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
@@ -40,7 +45,9 @@ function VisMenu() {
                 <Card.Subtitle className="mb-2 text-muted" tag="h6">
                   Visualise miscellaneous data in a bar format
                 </Card.Subtitle>
-                <Button>Go!</Button>
+                <Link to="/bar">
+                  <Button>Go!</Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>

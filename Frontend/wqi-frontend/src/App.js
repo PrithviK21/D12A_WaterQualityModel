@@ -8,17 +8,25 @@ import Heatmap from "./pages/Heatmap";
 import Prevention from "./pages/Prevention";
 import LineChart from "./pages/LineChart";
 import BarChart from "./pages/BarChart";
+import { Route, Routes } from "react-router";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Homepage /> */}
       {/* <VisMenu /> */}
       {/* <Heatmap /> */}
       {/* <LineChart /> */}
-      <BarChart />
+      {/* <BarChart /> */}
       {/* <Prevention /> */}
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="prevention" element={<Prevention />} />
+        <Route path="vis" element={<VisMenu />} />
+        <Route path="line" element={<LineChart />} />
+        <Route path="bar" element={<BarChart />} />
+        <Route path="heatmap" element={<Heatmap />} />
+      </Routes>
       <Footer />
     </div>
   );
