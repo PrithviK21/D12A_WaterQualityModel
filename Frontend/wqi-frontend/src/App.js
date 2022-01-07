@@ -1,31 +1,25 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import * as Pages from "./Ipageimport.jsx";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Homepage from "./pages/Homepage";
-import VisMenu from "./pages/VisMenu";
-import Heatmap from "./pages/Heatmap";
-import Prevention from "./pages/Prevention";
-import LineChart from "./pages/LineChart";
-import BarChart from "./pages/BarChart";
 import { Route, Routes } from "react-router";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      {/* <VisMenu /> */}
-      {/* <Heatmap /> */}
-      {/* <LineChart /> */}
-      {/* <BarChart /> */}
-      {/* <Prevention /> */}
+      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="prevention" element={<Prevention />} />
-        <Route path="vis" element={<VisMenu />} />
-        <Route path="line" element={<LineChart />} />
-        <Route path="bar" element={<BarChart />} />
-        <Route path="heatmap" element={<Heatmap />} />
+        <Route path="/" element={<Pages.Homepage />} />
+        <Route path="prevention" element={<Pages.Prevention />} />
+        <Route path="vis" element={<Pages.VisMenu />} />
+        <Route path="line" element={<Pages.LineChart />} />
+        <Route path="bar" element={<Pages.BarChart />} />
+        <Route path="heatmap" element={<Pages.Heatmap />} />
+        <Route path="dataset" element={<Pages.Dataset />} />
+        <Route path="about" element={<Pages.AboutUs />} />
       </Routes>
       <Footer />
     </div>

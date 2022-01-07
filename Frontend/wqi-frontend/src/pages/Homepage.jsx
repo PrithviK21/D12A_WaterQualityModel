@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Homepage() {
   return (
     <div>
-      <Hero text="Pollution, an epidemic" />
+      <Hero home={true} />
 
       <Container>
         <Row className="bruhRow" xs={1} md={2}>

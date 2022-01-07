@@ -5,29 +5,6 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    // <header>
-    //   <nav className="normie-navbar">
-    //     <span>Rivers be dyin</span> {/* will become image*/}
-    //     <ul className="header-links">
-    //       <a href="/">
-    //         <li>HOME</li>
-    //       </a>
-    //       <a href="/">
-    //         <li>VISUALISATION</li>
-    //       </a>
-    //       <a href="/">
-    //         <li>PREVENTION</li>
-    //       </a>
-    //       <a href="/">
-    //         <li>DATASET</li>
-    //       </a>
-    //       <a href="/">
-    //         <li>ABOUT US</li>
-    //       </a>s
-    //     </ul>
-    //   </nav>
-    // </header>
-
     <Navbar variant="dark" expand="md">
       <Link to="/">
         <Navbar.Brand href="">Rivers be dyin</Navbar.Brand>
@@ -45,11 +22,11 @@ function Header() {
               <Nav.Link href="/">PREVENTION</Nav.Link>
             </Link>
           </Nav.Item>
-          <Link to="/dataset">
+          {/* <Link to="/dataset">
             <Nav.Item>
               <Nav.Link href="/">DATASET</Nav.Link>
             </Nav.Item>
-          </Link>
+          </Link> */}
           <Link to="/about">
             <Nav.Item>
               <Nav.Link href="/">ABOUT US</Nav.Link>

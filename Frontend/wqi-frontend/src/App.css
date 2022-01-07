@@ -67,12 +67,16 @@ a:active {
 }
 .hero-container {
   height: 100vh;
-  background-image: url(./assets/pollution2cd.png);
+  background-image: url(./assets/pollution2.png);
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.clean-hero-container {
+  background-image: url(./assets/cleanwater.jpg);
+}
+
 .hero-text {
   color: white;
   font-size: 6em;
@@ -199,7 +203,6 @@ a:active {
 }
 .graph-placeholder {
   height: 70vh;
- 
 }
 .info-container {
   background-color: rgb(78, 78, 78);
@@ -229,6 +232,7 @@ footer {
 
   .hero-text {
     font-size: 3rem;
+    text-align: center;
   }
 
   .text-container {
@@ -256,4 +260,36 @@ footer {
     width: 100%;
     height: 50vh;
   }
+}
+
+/* About page  */
+
+.aboutus-container {
+  text-align: center;
+}
+
+.aboutus-container .row {
+  min-height: calc(100vh / 3);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.aboutus-container .col > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.aboutus-container .col:nth-child(1) {
+  background-color: rgba(255, 145, 145, 0.5);
+}
+.aboutus-container .col:nth-child(2) {
+  background-color: rgba(145, 255, 218, 0.5);
+}
+.aboutus-container .col:nth-child(3) {
+  background-color: rgba(246, 145, 255, 0.5);
+}
+.aboutus-container .col:nth-child(4) {
+  background-color: rgba(163, 255, 145, 0.5);
 }

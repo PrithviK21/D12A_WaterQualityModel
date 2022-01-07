@@ -1,14 +1,16 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div>
       <footer>
-        <h1>LOGO</h1>
-        <p>Copyright my ass</p>
-        <a href="/">
+        <Link to="/">
+          <h1>LOGO</h1>
+        </Link>
+        <p>&copy; D12A Group 22</p>
+        <Link to="/about">
           <h3>About Us</h3>
-        </a>
+        </Link>
       </footer>
     </div>
   );
