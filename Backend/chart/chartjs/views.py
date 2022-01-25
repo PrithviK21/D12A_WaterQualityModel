@@ -198,11 +198,14 @@ class ModelRiverData(APIView):
     authentication_classes = []
     permission_classes = []
     def get(self, request, format = None):
+        rivername = request.GET.get('rivername')
+        print(rivername)
         df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
-        wqiriver1 = np.array(df[df['RIVER'] == 'GANGA']['WQI'])
-        gangaload = joblib.load('chartjs/templates/chartjs/river_models/GANGA.pkl')
+        wqiriver1 = np.array(df[df['RIVER'] == rivername]['WQI'])
+        print(wqiriver1)
+        riverload = joblib.load('chartjs/templates/chartjs/river_models/'+rivername+'.pkl')
         years = pd.DataFrame({"YEAR": [i for i in range (2020,2031)]})
-        wqi = np.array(gangaload.predict(years))
+        wqi = np.array(riverload.predict(years))
         labels = ['2009', '2010', '2011', '2012', '2013', '2014','2015','2016','2017','2018','2019'] + list(years['YEAR'])
         chartLabel = 'GANGA'
         chartdata = list(wqiriver1) + list(wqi) 
@@ -222,7 +225,7 @@ class ModelRiverData(APIView):
             'x': list(years['YEAR']),
             'y': wqi,
             'mode': 'lines',
-            'name': 'From 2020 to 2031',
+            'name': 'From 2020 to 2030',
             'line': {
               'color': 'rgb(55, 128, 191)',
               'width': 3

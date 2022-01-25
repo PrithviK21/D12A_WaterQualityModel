@@ -52,7 +52,7 @@ function LineChart() {
   //       Plotly.newPlot(graphplaceholder, data, layout);
 
   useEffect(() => {
-    const endpoint = "http://127.0.0.1:8000/api/?rivername=" + river;
+    const endpoint = "http://127.0.0.1:8000/modelriverapi/?rivername=" + river;
     axios
       .get(endpoint)
       .then((response) => {
@@ -84,15 +84,8 @@ function LineChart() {
           <Col lg={8}>
             <div className="graph-placeholder" id="graphplaceholder">
               <Plot
-                data={[
-                  {
-                    x: riverData.x,
-                    y: riverData.y,
-                    type: "line",
-                    marker: { color: "red" },
-                  },
-                ]}
-                layout={{ width: 900, height: 500, title: riverData.name }}
+                data={[riverData.trace1,riverData.trace2]}
+                layout={{ width: 700, height: 500}}
               />
             </div>
           </Col>
