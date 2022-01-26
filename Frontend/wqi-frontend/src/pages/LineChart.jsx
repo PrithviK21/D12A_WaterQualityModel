@@ -76,6 +76,7 @@ function LineChart() {
               search
               filterOptions={fuzzySearch}
               onChange={handleChange}
+              multiple
               value={river}
             />
           </Col>
