@@ -12,6 +12,9 @@ const Plot = createPlotlyComponent(Plotly);
 function LineChart() {
   const [riverData, setRiverData] = useState([]);
   const [river, setRiver] = useState('');
+  const [firstriver, setFirstRiver] = useState('');
+  const [secondriver, setSecondRiver] = useState('');
+  const [comparedata,setCompareData] = useState([]);
   const options = rivers;
 
   const handleChange = (val) => {
@@ -31,6 +34,16 @@ function LineChart() {
 
 
   };
+
+  const handleChangefirst = (val) => {
+    console.log(val);
+    setFirstRiver(val);
+  }
+
+  const handleChangesecond = (val) => {
+    console.log(val);
+    setSecondRiver(val);
+  }
 
   // axios.get(endpoint)
   //   .then((response) => {
@@ -65,6 +78,21 @@ function LineChart() {
       });
   }, [river])
 
+  useEffect(() => {
+    const endpoint = "http://127.0.0.1:8000/compareapi/?comparerivername=" + firstriver + ',' + secondriver;
+    axios
+      .get(endpoint)
+      .then((response) => {
+        const comdata = response.data;
+        setCompareData(comdata);
+        console.log(comdata);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [firstriver,secondriver])
+
+
   return (
     <div>
       <Container className="map-container">
@@ -76,7 +104,6 @@ function LineChart() {
               search
               filterOptions={fuzzySearch}
               onChange={handleChange}
-              multiple
               value={river}
             />
           </Col>
@@ -86,6 +113,47 @@ function LineChart() {
             <div className="graph-placeholder" id="graphplaceholder">
               <Plot
                 data={[riverData.trace1,riverData.trace2]}
+                layout={{ width: 700, height: 500}}
+              />
+            </div>
+          </Col>
+          <Col lg={4}>
+            <div className="info-container"></div>
+          </Col>
+        </Row>
+      </Container>
+
+
+      <h1 className="comparehead">Compare Two rivers</h1>
+
+      <Container className="map-container">
+        <Row xs={2}>
+          <Col>
+            <SelectSearch
+              options={options}
+              placeholder="Choose a river"
+              search
+              filterOptions={fuzzySearch}
+              onChange={handleChangefirst}
+              value={firstriver}
+            />
+          </Col>
+          <Col>
+            <SelectSearch
+              options={options}
+              placeholder="Choose another river"
+              search
+              filterOptions={fuzzySearch}
+              onChange={handleChangesecond}
+              value={secondriver}
+            />
+          </Col>
+        </Row>
+        <Row xs={1} md={2}>
+          <Col lg={8}>
+            <div className="graph-placeholder" id="graphplaceholder">
+              <Plot
+                data={[comparedata.trace1,comparedata.trace2]}
                 layout={{ width: 700, height: 500}}
               />
             </div>

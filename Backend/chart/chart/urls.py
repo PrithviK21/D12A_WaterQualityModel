@@ -25,7 +25,7 @@ urlpatterns = [
     path('heatmap/', views.HeatmapViews.as_view()),
     path('heatmapapi/', views.HeatMapData.as_view()),
     path('compare/', views.CompareViews.as_view()),
-    path('compareapi', views.CompareData.as_view()),
+    path('compareapi/', views.CompareData.as_view()),
     path('modelriver/', views.ModelRiverViews.as_view()),
     path('modelriverapi/', views.ModelRiverData.as_view()),
     path('countwqiapi/', views.CountWQIData.as_view()),

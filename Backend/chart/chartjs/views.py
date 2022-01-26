@@ -162,28 +162,52 @@ class CompareData(APIView):
     authentication_classes = []
     permission_classes = []
     def get(self, request, format = None):
+        comparerivername = request.GET.get('comparerivername')
+        print(comparerivername)
+        rivers = comparerivername.split(',')
+        print(rivers)
+        firstrivername = rivers[0]
+        secondrivername = rivers[1]
         df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
-        wqiriver1 = np.array(df[df['RIVER'] == 'ARKAVATHI']['WQI'])
-        wqiriver2 = np.array(df[df['RIVER'] == 'GANGA']['WQI'])
-        year = ['2009', '2010', '2011', '2012', '2013', '2014','2015','2016','2017','2018','2019']
-        # print(wqi[0], year[0])
-        # print(df[df['RIVER'] == 'ARKAVATHI'])
-        labels = year
-        dataFirst = {
-            'label': 'ARKAVATHI',
-            'data': wqiriver1,
-            'lineTension': 0,
-            'borderColor': 'red'
+        wqiriver1 = np.array(df[df['RIVER'] == firstrivername]['WQI'])
+        wqiriver2 = np.array(df[df['RIVER'] == secondrivername]['WQI'])
+        print(wqiriver1)
+        print(wqiriver2)
+        firstriverload = joblib.load('chartjs/templates/chartjs/river_models/'+firstrivername+'.pkl')
+        firstyears = pd.DataFrame({"YEAR": [i for i in range (2020,2031)]})
+        firstwqi = np.array(firstriverload.predict(firstyears))
+        firstyear = ['2009', '2010', '2011', '2012', '2013', '2014','2015','2016','2017','2018','2019'] + list(firstyears['YEAR'])
+        firstchartdata = list(wqiriver1) + list(firstwqi) 
+        secondtriverload = joblib.load('chartjs/templates/chartjs/river_models/'+secondrivername+'.pkl')
+        secondyears = pd.DataFrame({"YEAR": [i for i in range (2020,2031)]})
+        secondwqi = np.array(secondtriverload.predict(secondyears))
+        secondyear = ['2009', '2010', '2011', '2012', '2013', '2014','2015','2016','2017','2018','2019'] + list(secondyears['YEAR'])
+        secondchartdata = list(wqiriver2) + list(secondwqi) 
+        trace1 = {
+            'type': 'line',
+            'x': firstyear,
+            'y': firstchartdata,
+            'mode': 'lines',
+            'name': 'From 2009 to 2030 ' + firstrivername,
+            'line': {
+              'color': 'rgb(219, 64, 82)',
+              'width': 3
+            }
         }
-        dataSecond = {
-            'label': 'GANGA',
-            'data': wqiriver2,
-            'lineTension': 0,
-            'borderColor': 'blue'
-        } 
+        trace2 = {
+            'type': 'line',
+            'x': secondyear,
+            'y': secondchartdata,
+            'mode': 'lines',
+            'name': 'From 2009 to 2030 ' + secondrivername,
+            'line': {
+              'color': 'rgb(55, 128, 191)',
+              'width': 3
+            }
+        }
         data ={
-                     "labels":labels,
-                     "datasets": [dataFirst, dataSecond]
+                     "trace1": trace1,
+                     "trace2": trace2
              }
         return Response(data) 
 
