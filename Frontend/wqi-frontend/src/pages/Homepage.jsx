@@ -11,7 +11,7 @@ function Homepage() {
       <Container>
         <Row className="bruhRow" xs={1} md={2}>
           <Col>
-            <img src="" alt="image here" />
+          <img src="https://www.mackmanresearch.co.uk/wp-content/uploads/2021/10/IMG_0902.jpg" class="w3-round" alt="DataVisualize"/>
           </Col>
           <Col>
             {" "}
@@ -29,7 +29,7 @@ function Homepage() {
         </Row>
         <Row className="bruhRow" xs={1} md={2}>
           <Col>
-            <img src="" alt="image here" />
+          <img src="https://business.cornell.edu/wp-content/uploads/sites/2/2019/03/world-water-day-featured-1.jpg" class="w3-round" alt="Alps"/> 
           </Col>
           <Col>
             <div className="text-container">

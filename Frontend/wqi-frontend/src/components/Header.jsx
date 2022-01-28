@@ -7,7 +7,7 @@ function Header() {
   return (
     <Navbar variant="dark" expand="md">
       <Link to="/">
-        <Navbar.Brand href="">Rivers be dyin</Navbar.Brand>
+        <Navbar.Brand href="">Jalrakshan</Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle" />
       <Navbar.Collapse id="basic-navbar-nav">
