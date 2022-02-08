@@ -15,11 +15,12 @@ function App() {
         <Route path="/" element={<Pages.Homepage />} />
         <Route path="prevention" element={<Pages.Prevention />} />
         <Route path="vis" element={<Pages.VisMenu />} />
-        {/* <Route path="line" element={<Pages.LineChart />} /> */}
-        {/* <Route path="bar" element={<Pages.BarChart />} /> */}
-        {/* <Route path="heatmap" element={<Pages.Heatmap />} /> */}
-        {/* <Route path="dataset" element={<Pages.Dataset />} /> */}
-        {/* <Route path="about" element={<Pages.AboutUs />} /> */}
+        <Route path="line" element={<Pages.LineChart />} />
+        <Route path="bar" element={<Pages.BarChart />} />
+        <Route path="heatmap" element={<Pages.Heatmap />} />
+        <Route path="dataset" element={<Pages.Dataset />} />
+        <Route path="about" element={<Pages.AboutUs />} />
+        <Route path="grievance" element={<Pages.grievance />} />
       </Routes>
       <Footer />
     </div>
