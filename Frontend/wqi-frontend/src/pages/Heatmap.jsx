@@ -9,12 +9,12 @@ const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
 
 function Heatmap() {
-  const [heatmapData, setHeatmapData] = useState([])
-  const [year, setYear] = useState('')
-  const options = []
+  const [heatmapData, setHeatmapData] = useState([]);
+  const [year, setYear] = useState("");
+  const options = [];
 
   for (let i = 2008; i <= 2030; i++) {
-    options.push({ name: i, value: i })
+    options.push({ name: i, value: i });
   }
 
   const handleChange = (val) => {
@@ -28,14 +28,14 @@ function Heatmap() {
       .get(endpoint)
       .then((response) => {
         const data = response.data;
-        console.log(data)
-        setHeatmapData(data)
+        console.log(data);
+        setHeatmapData(data);
         // console.log(heatmapData.z, heatmapData.locations);
       })
       .catch((e) => {
         console.log(e);
       });
-  }, [year])
+  }, [year]);
 
   return (
     <div>
@@ -55,29 +55,21 @@ function Heatmap() {
         </Row>
         {/* <div className="map-placeholder"></div> */}
         <Plot
-          data={
-            [
-              {
-                type: 'choropleth',
-                locationmode: 'geojson-id',
-                geojson: heatmapData.geojson,
-                locations: heatmapData.locations,
-                z: heatmapData.z,
-                text: heatmapData.text,
-                hoverinfo: "text + z",
-                colorscale: [
-                  ['0.0', '#00008B'],
-                  ['0.3', '#0000CD'],
-                  ['0.45', '#0000FF'],
-                  ['0.55', '#4169E1'],
-                  ['0.7', '#1E90FF'],
-                  ['1.0', '#00FFFF']
-                ],
-                zmax: 100,
-                zmin: 0
-              }
-            ]
-          }
+          data={[
+            {
+              type: "choropleth",
+              locationmode: "geojson-id",
+              geojson: heatmapData.geojson,
+              locations: heatmapData.locations,
+              z: heatmapData.z,
+              text: heatmapData.text,
+              hoverinfo: "text + z",
+              autocolorscale: true,
+
+              zmax: 100,
+              zmin: 0,
+            },
+          ]}
           layout={{
             title: `WQI by State for ${year}`,
             geo: {

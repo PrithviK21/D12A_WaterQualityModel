@@ -103,7 +103,14 @@ a:active {
   align-items: center;
   justify-content: space-around;
 }
-
+.bruhRow-half:nth-child(even) {
+  flex-direction: row-reverse;
+}
+@media (max-width: 768px) {
+  .bruhRow-half {
+    flex-direction: column;
+  }
+}
 .bruhRow:nth-child(2) {
   flex-direction: row-reverse;
 }
@@ -174,7 +181,7 @@ a:active {
   justify-content: center;
   align-items: center;
 }
-.comparehead{
+.comparehead {
   text-align: center;
   margin-bottom: 5%;
 }

@@ -5,7 +5,7 @@ function Footer() {
     <div>
       <footer>
         <Link to="/">
-          <h1>LOGO</h1>
+          <h1>Jalrakshan</h1>
         </Link>
         <p>&copy; D12A Group 22</p>
         <Link to="/about">
