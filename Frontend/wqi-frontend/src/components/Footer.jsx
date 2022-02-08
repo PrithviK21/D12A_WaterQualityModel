@@ -7,9 +7,13 @@ function Footer() {
         <Link to="/">
           <h1>Jalrakshan</h1>
         </Link>
-        <p>&copy; D12A Group 22</p>
+        <div className="footer-center">
+          <p>&copy; D12A Group 22</p>
+          {/* changed "to" to grievances later */}
+          <p>Have any grievances? <Link to="/">Let us know.</Link></p>
+        </div>
         <Link to="/about">
-          <h3>About Us</h3>
+          <h4>About Us</h4>
         </Link>
       </footer>
     </div>

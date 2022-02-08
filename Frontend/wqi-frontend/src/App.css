@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em;
+  padding: 1em 2em;
   color: white;
 }
 
@@ -226,10 +226,19 @@ a:active {
 footer {
   height: 10vh;
   background-color: #1e3163;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) ;
+  place-items: center;
+  text-align: center;
   color: white;
+}
+
+footer p {
+  margin: 0;
+}
+
+.footer-center a {
+  color: cyan;
 }
 
 @media (max-width: 900px) {
