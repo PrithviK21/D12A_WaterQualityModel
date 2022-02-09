@@ -10,14 +10,14 @@ function Homepage() {
 
       <Container>
         <Row className="bruhRow" xs={1} md={2}>
-          <Col>
+          <Col className="home-img-container">
             <img
               src="https://www.mackmanresearch.co.uk/wp-content/uploads/2021/10/IMG_0902.jpg"
               class="w3-round"
               alt="DataVisualize"
             />
           </Col>
-          <Col>
+          <Col className="home-text-col">
             {" "}
             <div className="text-container">
               <h1>Visualisation</h1>
@@ -32,14 +32,14 @@ function Homepage() {
           </Col>
         </Row>
         <Row className="bruhRow" xs={1} md={2}>
-          <Col>
+          <Col className="home-img-container">
             <img
               src="https://business.cornell.edu/wp-content/uploads/sites/2/2019/03/world-water-day-featured-1.jpg"
               class="w3-round"
               alt="Alps"
             />
           </Col>
-          <Col>
+          <Col className="home-text-col">
             <div className="text-container">
               <h1>
                 How can <br /> <span className="big-text">YOU</span> <br />

@@ -6,7 +6,7 @@ import LineChart from "./pages/LineChart";
 import BarChart from "./pages/BarChart";
 import AboutUs from "./pages/AboutUs";
 import Dataset from "./pages/Dataset";
-import grievance from "./pages/grievance";
+import Grievance from "./pages/Grievance";
 
 export {
   Homepage,
@@ -17,5 +17,5 @@ export {
   BarChart,
   AboutUs,
   Dataset,
-  grievance,
+  Grievance,
 };
