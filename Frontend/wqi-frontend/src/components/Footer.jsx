@@ -10,7 +10,9 @@ function Footer() {
         <div className="footer-center">
           <p>&copy; D12A Group 22</p>
           {/* changed "to" to grievances later */}
-          <p>Have any grievances? <Link to="/">Let us know.</Link></p>
+          <p>
+            Have any grievances? <Link to="/grievance">Let us know.</Link>
+          </p>
         </div>
         <Link to="/about">
           <h4>About Us</h4>

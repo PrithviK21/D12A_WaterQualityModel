@@ -3,3 +3,4 @@
 Backend/chart/chartjs/migrations
 Backend/chart/chartjs/__pycache__
 Backend/chart/chart/__pycache__
+Frontend/wqi-frontend/.env
