@@ -11,11 +11,11 @@ const Plot = createPlotlyComponent(Plotly);
 
 function LineChart() {
   const [wqiData, setWqiData] = useState([]);
-  const [year, setYear] = useState('');
+  const [year, setYear] = useState("");
   const options = [];
 
   for (let i = 2008; i <= 2019; i++) {
-    options.push({ name: i, value: i })
+    options.push({ name: i, value: i });
   }
 
   const handleChange = (val) => {
@@ -32,8 +32,6 @@ function LineChart() {
     //   console.log(response.data);
     //   refreshPage();
     // });
-
-
   };
 
   useEffect(() => {
@@ -48,7 +46,7 @@ function LineChart() {
       .catch((e) => {
         console.log(e);
       });
-  }, [year])
+  }, [year]);
 
   return (
     <div>
@@ -73,9 +71,14 @@ function LineChart() {
                   {
                     x: wqiData,
                     type: "histogram",
-                  }
+                    colorscale: "Earth",
+                  },
                 ]}
-                layout={{ width: 500, height: 500, title: `WQI distribution for ${year}` }}
+                layout={{
+                  width: 500,
+                  height: 500,
+                  title: `WQI distribution for ${year}`,
+                }}
               />
             </div>
           </Col>

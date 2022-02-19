@@ -214,8 +214,9 @@ a:active {
   background-color: black;
 }
 .graph-placeholder {
-  height: 70vh;
-  margin-left: 35%;
+  margin: auto;
+  width: 66vw;
+  height: 66vh;
 }
 .info-container {
   background-color: rgb(78, 78, 78);

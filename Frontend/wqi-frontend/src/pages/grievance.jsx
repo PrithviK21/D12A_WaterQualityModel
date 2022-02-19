@@ -5,7 +5,6 @@ import emailjs, { init } from "@emailjs/browser";
 init(process.env.REACT_APP_EMAIL_API);
 
 function Grievance() {
-  console.log(process.env.REACT_APP_EMAIL_API);
   const [name, setName] = useState("");
   const [msg, setMsg] = useState("");
   const [email, setEmail] = useState("");

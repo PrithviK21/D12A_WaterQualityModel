@@ -10,7 +10,7 @@ const Plot = createPlotlyComponent(Plotly);
 
 function Heatmap() {
   const [heatmapData, setHeatmapData] = useState([]);
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState("2008");
   const options = [];
 
   for (let i = 2008; i <= 2030; i++) {

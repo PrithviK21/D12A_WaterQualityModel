@@ -11,7 +11,7 @@ const Plot = createPlotlyComponent(Plotly);
 
 function LineChart() {
   const [riverData, setRiverData] = useState([]);
-  const [river, setRiver] = useState("");
+  const [river, setRiver] = useState("ALKANANDA");
   const [firstriver, setFirstRiver] = useState("");
   const [secondriver, setSecondRiver] = useState("");
   const [comparedata, setCompareData] = useState([]);
@@ -76,23 +76,23 @@ function LineChart() {
       });
   }, [river]);
 
-  useEffect(() => {
-    const endpoint =
-      "http://127.0.0.1:8000/compareapi/?comparerivername=" +
-      firstriver +
-      "," +
-      secondriver;
-    axios
-      .get(endpoint)
-      .then((response) => {
-        const comdata = response.data;
-        setCompareData(comdata);
-        console.log(comdata);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, [firstriver, secondriver]);
+  // useEffect(() => {
+  //   const endpoint =
+  //     "http://127.0.0.1:8000/compareapi/?comparerivername=" +
+  //     firstriver +
+  //     "," +
+  //     secondriver;
+  //   axios
+  //     .get(endpoint)
+  //     .then((response) => {
+  //       const comdata = response.data;
+  //       setCompareData(comdata);
+  //       console.log(comdata);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, [firstriver, secondriver]);
 
   return (
     <div>
@@ -109,17 +109,24 @@ function LineChart() {
             />
           </Col>
         </Row>
-        <Row xs={1} md={2}>
-          <Col lg={8}>
-            <div className="graph-placeholder" id="graphplaceholder">
-              <Plot
-                data={[riverData.trace1, riverData.trace2]}
-                layout={
-                  { title: {text: `River ${river}`} , width: 700, height: 500}
-                }
-              />
-            </div>
-          </Col>
+        <Row>
+          <div className="graph-placeholder" id="graphplaceholder">
+            <Plot
+              data={[riverData.trace1, riverData.trace2]}
+              layout={{
+                title: { text: `River ${river}` },
+                autosize: true,
+                xaxis: {
+                  title: "Year",
+                },
+                yaxis: {
+                  title: "WQI",
+                },
+              }}
+              useResizeHandler
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
           {/* <Col lg={4}>
             <div className="info-container"></div>
           </Col> */}
