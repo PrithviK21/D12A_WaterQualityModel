@@ -11,10 +11,10 @@ const Plot = createPlotlyComponent(Plotly);
 
 function LineChart() {
   const [riverData, setRiverData] = useState([]);
-  const [river, setRiver] = useState('');
-  const [firstriver, setFirstRiver] = useState('');
-  const [secondriver, setSecondRiver] = useState('');
-  const [comparedata,setCompareData] = useState([]);
+  const [river, setRiver] = useState("");
+  const [firstriver, setFirstRiver] = useState("");
+  const [secondriver, setSecondRiver] = useState("");
+  const [comparedata, setCompareData] = useState([]);
   const options = rivers;
 
   const handleChange = (val) => {
@@ -31,19 +31,17 @@ function LineChart() {
     //   console.log(response.data);
     //   refreshPage();
     // });
-
-
   };
 
   const handleChangefirst = (val) => {
     console.log(val);
     setFirstRiver(val);
-  }
+  };
 
   const handleChangesecond = (val) => {
     console.log(val);
     setSecondRiver(val);
-  }
+  };
 
   // axios.get(endpoint)
   //   .then((response) => {
@@ -76,10 +74,14 @@ function LineChart() {
       .catch((e) => {
         console.log(e);
       });
-  }, [river])
+  }, [river]);
 
   useEffect(() => {
-    const endpoint = "http://127.0.0.1:8000/compareapi/?comparerivername=" + firstriver + ',' + secondriver;
+    const endpoint =
+      "http://127.0.0.1:8000/compareapi/?comparerivername=" +
+      firstriver +
+      "," +
+      secondriver;
     axios
       .get(endpoint)
       .then((response) => {
@@ -90,8 +92,7 @@ function LineChart() {
       .catch((e) => {
         console.log(e);
       });
-  }, [firstriver,secondriver])
-
+  }, [firstriver, secondriver]);
 
   return (
     <div>
@@ -112,19 +113,20 @@ function LineChart() {
           <Col lg={8}>
             <div className="graph-placeholder" id="graphplaceholder">
               <Plot
-                data={[riverData.trace1,riverData.trace2]}
-                layout={{ width: 700, height: 500}}
+                data={[riverData.trace1, riverData.trace2]}
+                layout={
+                  { title: {text: `River ${river}`} , width: 700, height: 500}
+                }
               />
             </div>
           </Col>
-          <Col lg={4}>
+          {/* <Col lg={4}>
             <div className="info-container"></div>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
 
-
-      <h1 className="comparehead">Compare Two rivers</h1>
+      {/* <h1 className="comparehead">Compare Two rivers</h1>
 
       <Container className="map-container">
         <Row xs={2}>
@@ -158,11 +160,8 @@ function LineChart() {
               />
             </div>
           </Col>
-          <Col lg={4}>
-            <div className="info-container"></div>
-          </Col>
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 }

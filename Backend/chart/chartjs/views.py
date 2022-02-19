@@ -255,6 +255,7 @@ class ModelRiverData(APIView):
               'width': 3
             }
         }
+        
         data ={
                      "trace1": trace1,
                      "trace2": trace2
