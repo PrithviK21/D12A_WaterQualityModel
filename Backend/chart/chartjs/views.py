@@ -98,7 +98,13 @@ class CountWQIData(APIView):
         df_year = df[df['YEAR'] == year]
         df_year['CLASS'] = df_year['WQI'].apply(lambda x: assignClass(x))
         print(df_year)
-        x = df_year['CLASS'].sort_values(axis=0)
+        x = list(df_year['CLASS'].sort_values(axis=0))
+        x.append('A')
+        x.append('B')
+        x.append('C')
+        x.append('D')
+        x.append('E')
+        print(x.sort())
         return Response(x)
 
 
@@ -275,4 +281,51 @@ class ModelRiverData(APIView):
         return Response(data)
 
     def post(self, response):
-        print(response)
+        print(response) 
+
+
+class Dataset(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        c = int(request.GET.get('counter'))
+        df = pd.read_excel("chartjs/templates/chartjs/Only_Rivers_groupby_interpolated.xlsx")
+        data = []
+        if c == 198:
+            for i in range(50*c,50*c+41):
+                t = {
+                    'CODE': df['STATION CODE'][i],
+                    'LOCATION': df['LOCATION'][i],
+                    'RIVER': df['RIVER'][i],
+                    'STATE': df['STATE'][i],
+                    'TEMPERATURE': df['TEMPERATURE'][i],
+                    'DO': df['DISSOLVED OXYGEN'][i],
+                    'PH': df['PH'][i],
+                    'CONDUCTIVITY': df['CONDUCTIVITY'][i],
+                    'BOD': df['BOD'][i],
+                    'NITRATE': df['NITRATE'][i],
+                    'COLIFORM': df['TOTAL COLIFORM'][i],
+                    'YEAR': df['YEAR'][i]
+                }
+                data.append(t)
+        else:
+            for i in range(50*c,50*c+50):
+                t = {
+                    'CODE': df['STATION CODE'][i],
+                    'LOCATION': df['LOCATION'][i],
+                    'RIVER': df['RIVER'][i],
+                    'STATE': df['STATE'][i],
+                    'TEMPERATURE': df['TEMPERATURE'][i],
+                    'DO': df['DISSOLVED OXYGEN'][i],
+                    'PH': df['PH'][i],
+                    'CONDUCTIVITY': df['CONDUCTIVITY'][i],
+                    'BOD': df['BOD'][i],
+                    'NITRATE': df['NITRATE'][i],
+                    'COLIFORM': df['TOTAL COLIFORM'][i],
+                    'YEAR': df['YEAR'][i]
+                }
+                data.append(t)
+        print(data)
+        return Response(data)
+

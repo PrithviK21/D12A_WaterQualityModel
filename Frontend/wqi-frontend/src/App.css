@@ -364,6 +364,78 @@ footer p {
   margin-top: 4%;
 }
 
+.condition-table{
+  margin-top: 5%;
+}
+
+.condition-A{
+  background-color:cyan;
+  display:block;
+  height:20px;
+  width:20px;
+  border-radius:50%;
+  margin:auto;
+}
+
+.condition-B{
+  background-color:lightgreen;
+  display:block;
+  height:20px;
+  width:20px;
+  border-radius:50%;
+  margin:auto;
+}
+
+.condition-C{
+  background-color:yellow;
+  display:block;
+  height:20px;
+  width:20px;
+  border-radius:50%;
+  margin:auto;
+}
+
+.condition-D{
+  background-color:orange;
+  display:block;
+  height:20px;
+  width:20px;
+  border-radius:50%;
+  margin:auto;
+}
+
+.condition-E{
+  background-color:red;
+  display:block;
+  height:20px;
+  width:20px;
+  border-radius:50%;
+  margin:auto;
+}
+
+.dataset-table{
+  overflow-x: scroll;
+  width: 100vw;
+}
+
+.next-page{
+  margin-right: 80%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.prev-page{
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.dataset-header{
+  text-align: center;
+  margin-top: 5%;
+}
+
+
+
 @media (max-width: 900px) {
   .grievance {
     width: 90%;
