@@ -4,14 +4,15 @@ import SelectSearch, { fuzzySearch } from "react-select-search";
 import "../select-search.css";
 import axios from "axios";
 import createPlotlyComponent from "react-plotly.js/factory";
+import { SyncLoader } from "react-spinners";
 
 const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
 
 function Heatmap() {
   const [heatmapData, setHeatmapData] = useState([]);
-  const [year, setYear] = useState("2008");
-  const options = [];
+  const [year, setYear] = useState(0);
+  const options = [{ name: "--Select a year--", value: 0 }];
 
   for (let i = 2008; i <= 2030; i++) {
     options.push({ name: i, value: i });
@@ -23,6 +24,10 @@ function Heatmap() {
   };
 
   useEffect(() => {
+    console.log(year);
+    setHeatmapData(null);
+    if (year === 0) return;
+    const start = Date.now();
     const endpoint = "http://127.0.0.1:8000/heatmapapi/?year=" + year;
     axios
       .get(endpoint)
@@ -30,7 +35,8 @@ function Heatmap() {
         const data = response.data;
         console.log(data);
         setHeatmapData(data);
-        // console.log(heatmapData.z, heatmapData.locations);
+        const end = Date.now();
+        console.log(`Time for request: ${(end - start) / 1000}s`);
       })
       .catch((e) => {
         console.log(e);
@@ -53,31 +59,62 @@ function Heatmap() {
             />
           </Col>
         </Row>
-        {/* <div className="map-placeholder"></div> */}
-        <Plot
-          data={[
-            {
-              type: "choropleth",
-              locationmode: "geojson-id",
-              geojson: heatmapData.geojson,
-              locations: heatmapData.locations,
-              z: heatmapData.z,
-              text: heatmapData.text,
-              hoverinfo: "text + z",
-              autocolorscale: true,
-
-              zmax: 100,
-              zmin: 0,
-            },
-          ]}
-          layout={{
-            title: `WQI by State for ${year}`,
-            geo: {
-              fitbounds: "locations",
-              visible: false,
-            },
-          }}
-        />
+        {heatmapData ? (
+          <Plot
+            data={[
+              {
+                type: "choropleth",
+                locationmode: "geojson-id",
+                geojson: heatmapData.geojson,
+                locations: heatmapData.locations,
+                z: heatmapData.z,
+                text: heatmapData.text,
+                hoverinfo: "text + z",
+                colorscale: [
+                  [0, "darkred"],
+                  [0.2, "red"],
+                  [0.4, "orange"],
+                  [0.6, "yellow"],
+                  [0.8, "lightgreen"],
+                  [1, "cyan"],
+                ],
+                zmax: 100,
+                zmin: 0,
+                colorbar: {
+                  len: 0.8,
+                },
+              },
+            ]}
+            layout={{
+              title: `WQI by State for ${year}`,
+              height: window.innerHeight * 0.8,
+              geo: {
+                fitbounds: "locations",
+                visible: false,
+              },
+              margin: {
+                b: 0,
+              },
+            }}
+            useResizeHandler
+            style={{ width: "100%", height: "100%" }}
+          />
+        ) : (
+          <Container className="heatmap-loader">
+            {year === 0 ? (
+              <h2>
+                No year selected :(
+                <br />
+                Select a year to view the heatmap! :D
+              </h2>
+            ) : (
+              <>
+                <SyncLoader color="cyan" />
+                <h2>{`Getting data for ${year} :D`}</h2>
+              </>
+            )}
+          </Container>
+        )}
       </Container>
     </div>
   );

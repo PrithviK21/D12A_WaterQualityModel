@@ -17,7 +17,7 @@ function App() {
         <Route path="vis" element={<Pages.VisMenu />} />
         <Route path="line" element={<Pages.LineChart />} />
         {/* <Route path="bar" element={<Pages.BarChart />} /> */}
-        {/* <Route path="heatmap" element={<Pages.Heatmap />} /> */}
+        <Route path="heatmap" element={<Pages.Heatmap />} />
         {/* <Route path="dataset" element={<Pages.Dataset />} /> */}
         <Route path="about" element={<Pages.AboutUs />} />
         <Route path="grievance" element={<Pages.Grievance />} />
