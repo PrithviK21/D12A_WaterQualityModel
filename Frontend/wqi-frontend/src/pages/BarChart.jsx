@@ -13,7 +13,7 @@ const Plot = createPlotlyComponent(Plotly);
 function LineChart() {
   const [wqiData, setWqiData] = useState([]);
   const [year, setYear] = useState(0);
-  const options = [];
+  const options = [{name: "--Select a year--", value: 0}];
 
   for (let i = 2008; i <= 2019; i++) {
     options.push({ name: i, value: i });
@@ -100,7 +100,7 @@ function LineChart() {
                 />
               </div>
             ) : (
-              <Container className="heatmap-loader">
+              <Container className="barchart-loader">
                 {year === 0 ? (
                   <h2>
                     No year selected :(

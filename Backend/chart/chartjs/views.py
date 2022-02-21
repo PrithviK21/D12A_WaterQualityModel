@@ -37,13 +37,14 @@ class ChartData(APIView):
     authentication_classes = []
     permission_classes = []
 
+    df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
+
     def get(self, request, format=None):
         rivername = request.GET.get('rivername')
         print(rivername)
-        df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
-        wqi = np.array(df[df['RIVER'] == rivername]['WQI'])
-        year = np.array(df[df['RIVER'] == rivername]['YEAR'])
-        print(df[df['RIVER'] == rivername])
+        wqi = np.array(self.df[self.df['RIVER'] == rivername]['WQI'])
+        year = np.array(self.df[self.df['RIVER'] == rivername]['YEAR'])
+        print(self.df[self.df['RIVER'] == rivername])
         trace1 = {
             'type': 'line',
             'x': year,
@@ -57,6 +58,8 @@ class ChartData(APIView):
 class CountWQIData(APIView):
     authentication_classes = []
     permission_classes = []
+
+    df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
 
     def get(self, request, format=None):
         # statename = request.GET.get('statename')
@@ -81,7 +84,6 @@ class CountWQIData(APIView):
         # return Response(data)
         year = int(request.GET.get('year'))
         print(year)
-        df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
 
         def assignClass(wqi):
             if wqi <= 25:
@@ -95,7 +97,7 @@ class CountWQIData(APIView):
             else:
                 return 'A'
 
-        df_year = df[df['YEAR'] == year]
+        df_year = self.df[self.df['YEAR'] == year]
         df_year['CLASS'] = df_year['WQI'].apply(lambda x: assignClass(x))
         print(df_year)
         x = list(df_year['CLASS'].sort_values(axis=0))
@@ -173,6 +175,8 @@ class CompareData(APIView):
     authentication_classes = []
     permission_classes = []
 
+    df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
+
     def get(self, request, format=None):
         comparerivername = request.GET.get('comparerivername')
         print(comparerivername)
@@ -180,9 +184,10 @@ class CompareData(APIView):
         print(rivers)
         firstrivername = rivers[0]
         secondrivername = rivers[1]
-        df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
-        wqiriver1 = np.array(df[df['RIVER'] == firstrivername]['WQI'])
-        wqiriver2 = np.array(df[df['RIVER'] == secondrivername]['WQI'])
+        wqiriver1 = np.array(
+            self.df[self.df['RIVER'] == firstrivername]['WQI'])
+        wqiriver2 = np.array(
+            self.df[self.df['RIVER'] == secondrivername]['WQI'])
         print(wqiriver1)
         print(wqiriver2)
         firstriverload = joblib.load(
@@ -236,12 +241,12 @@ class ModelRiverViews(View):
 class ModelRiverData(APIView):
     authentication_classes = []
     permission_classes = []
+    df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
 
     def get(self, request, format=None):
         rivername = request.GET.get('rivername')
         print(rivername)
-        df = pd.read_excel("chartjs/wqilimitriver_morethanequalto5.xlsx")
-        wqiriver1 = np.array(df[df['RIVER'] == rivername]['WQI'])
+        wqiriver1 = np.array(self.df[self.df['RIVER'] == rivername]['WQI'])
         print(wqiriver1)
         riverload = joblib.load(
             'chartjs/templates/chartjs/river_models/'+rivername+'.pkl')
@@ -281,51 +286,34 @@ class ModelRiverData(APIView):
         return Response(data)
 
     def post(self, response):
-        print(response) 
+        print(response)
 
 
 class Dataset(APIView):
     authentication_classes = []
     permission_classes = []
 
+    df = pd.read_excel(
+        "chartjs/templates/chartjs/Only_Rivers_groupby_interpolated.xlsx")
+
     def get(self, request, format=None):
         c = int(request.GET.get('counter'))
-        df = pd.read_excel("chartjs/templates/chartjs/Only_Rivers_groupby_interpolated.xlsx")
         data = []
-        if c == 198:
-            for i in range(50*c,50*c+41):
-                t = {
-                    'CODE': df['STATION CODE'][i],
-                    'LOCATION': df['LOCATION'][i],
-                    'RIVER': df['RIVER'][i],
-                    'STATE': df['STATE'][i],
-                    'TEMPERATURE': df['TEMPERATURE'][i],
-                    'DO': df['DISSOLVED OXYGEN'][i],
-                    'PH': df['PH'][i],
-                    'CONDUCTIVITY': df['CONDUCTIVITY'][i],
-                    'BOD': df['BOD'][i],
-                    'NITRATE': df['NITRATE'][i],
-                    'COLIFORM': df['TOTAL COLIFORM'][i],
-                    'YEAR': df['YEAR'][i]
-                }
-                data.append(t)
-        else:
-            for i in range(50*c,50*c+50):
-                t = {
-                    'CODE': df['STATION CODE'][i],
-                    'LOCATION': df['LOCATION'][i],
-                    'RIVER': df['RIVER'][i],
-                    'STATE': df['STATE'][i],
-                    'TEMPERATURE': df['TEMPERATURE'][i],
-                    'DO': df['DISSOLVED OXYGEN'][i],
-                    'PH': df['PH'][i],
-                    'CONDUCTIVITY': df['CONDUCTIVITY'][i],
-                    'BOD': df['BOD'][i],
-                    'NITRATE': df['NITRATE'][i],
-                    'COLIFORM': df['TOTAL COLIFORM'][i],
-                    'YEAR': df['YEAR'][i]
-                }
-                data.append(t)
-        print(data)
+        for i in range(50*c, min(50*c+50, len(self.df))):
+            t = {
+                'CODE': self.df['STATION CODE'][i],
+                'LOCATION': self.df['LOCATION'][i],
+                'RIVER': self.df['RIVER'][i],
+                'STATE': self.df['STATE'][i],
+                'TEMPERATURE': self.df['TEMPERATURE'][i],
+                'DO': self.df['DISSOLVED OXYGEN'][i],
+                'PH': self.df['PH'][i],
+                'CONDUCTIVITY': self.df['CONDUCTIVITY'][i],
+                'BOD': self.df['BOD'][i],
+                'NITRATE': self.df['NITRATE'][i],
+                'COLIFORM': self.df['TOTAL COLIFORM'][i],
+                'YEAR': self.df['YEAR'][i]
+            }
+            data.append(t)
+        # print(data)
         return Response(data)
-

@@ -220,6 +220,21 @@ a:active {
   width: 66vw;
   height: 66vh;
 }
+.linechart-loader {
+  height: 600px;
+  display: grid;
+  place-items: center;
+}
+.barchart-loader {
+  background-color: white;
+  height: 450px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
 .heatmap-loader {
   background-color: white;
   height: 80vh;
@@ -364,77 +379,97 @@ footer p {
   margin-top: 4%;
 }
 
-.condition-table{
+.condition-table {
   margin-top: 5%;
 }
 
-.condition-A{
-  background-color:cyan;
-  display:block;
-  height:20px;
-  width:20px;
-  border-radius:50%;
-  margin:auto;
+.condition-A {
+  background-color: cyan;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin: auto;
 }
 
-.condition-B{
-  background-color:lightgreen;
-  display:block;
-  height:20px;
-  width:20px;
-  border-radius:50%;
-  margin:auto;
+.condition-B {
+  background-color: lightgreen;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin: auto;
 }
 
-.condition-C{
-  background-color:yellow;
-  display:block;
-  height:20px;
-  width:20px;
-  border-radius:50%;
-  margin:auto;
+.condition-C {
+  background-color: yellow;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin: auto;
 }
 
-.condition-D{
-  background-color:orange;
-  display:block;
-  height:20px;
-  width:20px;
-  border-radius:50%;
-  margin:auto;
+.condition-D {
+  background-color: orange;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin: auto;
 }
 
-.condition-E{
-  background-color:red;
-  display:block;
-  height:20px;
-  width:20px;
-  border-radius:50%;
-  margin:auto;
+.condition-E {
+  background-color: red;
+  display: block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin: auto;
 }
 
-.dataset-table{
-  overflow-x: scroll;
-  width: 100vw;
+.dataset-table-wrapper {
+  width: 100%;
+  padding: 2rem 1rem;
 }
 
-.next-page{
-  margin-right: 80%;
-  margin-top: 2%;
-  margin-bottom: 5%;
+.next-page,
+.prev-page {
+  background-color: #2d46b9;
+  border: none;
 }
 
-.prev-page{
-  margin-top: 2%;
-  margin-bottom: 5%;
-}
-
-.dataset-header{
+.dataset-header {
   text-align: center;
-  margin-top: 5%;
+  margin-bottom: 1rem;
 }
 
+.dataset-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.dataset-counter {
+  background-color: #2d46b9;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 0.25rem;
+}
+
+.dataset-loader {
+  height: 80vh;
+  display: grid;
+  place-items: center;
+}
+
+.dataset-table {
+  /* uncomment below in order to make table shorter but vertically scrollable */
+  /* height: 100vh; */
+  display: block;
+  overflow: auto;
+}
 
 @media (max-width: 900px) {
   .grievance {

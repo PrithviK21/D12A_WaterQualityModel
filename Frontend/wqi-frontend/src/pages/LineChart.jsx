@@ -5,12 +5,13 @@ import "../select-search.css";
 import rivers from "../rivers";
 import axios from "axios";
 import createPlotlyComponent from "react-plotly.js/factory";
+import { SyncLoader } from "react-spinners";
 
 const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
 
 function LineChart() {
-  const [riverData, setRiverData] = useState([]);
+  const [riverData, setRiverData] = useState(null);
   const [river, setRiver] = useState("ALKANANDA");
   const [firstriver, setFirstRiver] = useState("");
   const [secondriver, setSecondRiver] = useState("");
@@ -110,23 +111,29 @@ function LineChart() {
           </Col>
         </Row>
         <Row>
-          <div className="graph-placeholder" id="graphplaceholder">
-            <Plot
-              data={[riverData.trace1, riverData.trace2]}
-              layout={{
-                title: { text: `River ${river}` },
-                autosize: true,
-                xaxis: {
-                  title: "Year",
-                },
-                yaxis: {
-                  title: "WQI",
-                },
-              }}
-              useResizeHandler
-              style={{ width: "100%", height: "100%" }}
-            />
-          </div>
+          {riverData ? (
+            <div className="graph-placeholder" id="graphplaceholder">
+              <Plot
+                data={[riverData.trace1, riverData.trace2]}
+                layout={{
+                  title: { text: `River ${river}` },
+                  autosize: true,
+                  xaxis: {
+                    title: "Year",
+                  },
+                  yaxis: {
+                    title: "WQI",
+                  },
+                }}
+                useResizeHandler
+                style={{ width: "100%", height: "100%" }}
+              />
+            </div>
+          ) : (
+            <div className="linechart-loader">
+              <SyncLoader color="cyan" />
+            </div>
+          )}
           {/* <Col lg={4}>
             <div className="info-container"></div>
           </Col> */}
