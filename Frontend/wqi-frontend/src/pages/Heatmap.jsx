@@ -109,7 +109,7 @@ function Heatmap() {
               </h2>
             ) : (
               <>
-                <SyncLoader color="cyan" />
+                <SyncLoader color="#2d46b9" />
                 <h2>{`Getting data for ${year} :D`}</h2>
               </>
             )}

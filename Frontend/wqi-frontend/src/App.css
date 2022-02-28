@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700;800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -342,6 +342,8 @@ footer p {
   min-height: calc(100vh / 3);
   border-radius: 20px;
   overflow: hidden;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 .aboutus-container .col > div {
@@ -350,6 +352,17 @@ footer p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.about-title {
+  background-color: #1e3163;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem 0;
+  width: 33%;
+  margin: 1em auto 0.5em auto;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: 700;
 }
 .aboutus-container .col:nth-child(1) {
   background-color: rgba(255, 145, 145, 0.5);
@@ -363,7 +376,69 @@ footer p {
 .aboutus-container .col:nth-child(4) {
   background-color: rgba(163, 255, 145, 0.5);
 }
+.dev-skills-list {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  font-family: "Poppins";
+  background-color: #00000080;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+}
+.about-text-container {
+  /* margin: auto; */
+  width: 100%;
+  font-size: 1.4rem;
+  background-color: #2d47b9e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 10px;
+}
+.about-text-container p {
+  width: 66%;
+  font-family: "Montserrat";
+  color: white;
+  margin: 0;
+}
+.about-dev-description * {
+  font-family: "Montserrat" !important;
+}
+.about-dev-description a {
+  color: black;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 0;
+  transition: 0.2s ease;
+}
+.about-dev-description h4 {
+  margin: 0;
+}
+.about-dev-description a:hover {
+  background-color: rgba(0, 0, 0, 0.445);
+  color: white;
+}
 
+@media (max-width: 900px) {
+  .about-text-container {
+    padding: 1em;
+    width: 90%;
+    margin: 1em auto;
+  }
+  .about-dev-description {
+    width: 100%;
+    margin: auto;
+  }
+  .about-text-container p {
+    width: 90%;
+  }
+  .about-title {
+    width: 100%;
+  }
+}
+/* GRIEVANCE PAGE */
 .grievance {
   width: 50%;
   background-color: #cddeff;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Table} from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import SelectSearch, { fuzzySearch } from "react-select-search";
 import "../select-search.css";
 // import states from "../states";
@@ -13,7 +13,7 @@ const Plot = createPlotlyComponent(Plotly);
 function LineChart() {
   const [wqiData, setWqiData] = useState([]);
   const [year, setYear] = useState(0);
-  const options = [{name: "--Select a year--", value: 0}];
+  const options = [{ name: "--Select a year--", value: 0 }];
 
   for (let i = 2008; i <= 2019; i++) {
     options.push({ name: i, value: i });
@@ -109,7 +109,7 @@ function LineChart() {
                   </h2>
                 ) : (
                   <>
-                    <SyncLoader color="cyan" />
+                    <SyncLoader color="#2d46b9" />
                     <h2>{`Getting data for ${year} :D`}</h2>
                   </>
                 )}
@@ -121,45 +121,54 @@ function LineChart() {
           </Col> */}
         </Row>
         <div className="condition-table">
-        <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Class</th>
-            <th>Condition</th>
-            <th>Color</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>A</td>
-            <td>Excellent</td>
-            <td><span class="condition-A"></span></td>
-          </tr>
-          <tr>
-            <td>B</td>
-            <td>Good</td>
-            <td><span class="condition-B"></span></td>
-          </tr>
-          <tr>
-            <td>C</td>
-            <td>Okay</td>
-            <td><span class="condition-C"></span></td>
-          </tr>
-          <tr>
-            <td>D</td>
-            <td>Bad</td>
-            <td><span class="condition-D"></span></td>
-          </tr>
-          <tr>
-            <td>E</td>
-            <td>Worse</td>
-            <td><span class="condition-E"></span></td>
-          </tr>
-        </tbody>
-      </Table>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Condition</th>
+                <th>Color</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A</td>
+                <td>Excellent</td>
+                <td>
+                  <span class="condition-A"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>Good</td>
+                <td>
+                  <span class="condition-B"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>C</td>
+                <td>Okay</td>
+                <td>
+                  <span class="condition-C"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>D</td>
+                <td>Bad</td>
+                <td>
+                  <span class="condition-D"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>E</td>
+                <td>Worse</td>
+                <td>
+                  <span class="condition-E"></span>
+                </td>
+              </tr>
+            </tbody>
+          </Table>
         </div>
       </Container>
-      
     </div>
   );
 }

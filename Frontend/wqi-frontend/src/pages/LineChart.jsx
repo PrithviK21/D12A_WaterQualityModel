@@ -131,7 +131,7 @@ function LineChart() {
             </div>
           ) : (
             <div className="linechart-loader">
-              <SyncLoader color="cyan" />
+              <SyncLoader color="#2d46b9" />
             </div>
           )}
           {/* <Col lg={4}>

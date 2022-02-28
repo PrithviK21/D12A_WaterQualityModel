@@ -98,7 +98,7 @@ function Dataset() {
         </Table>
       ) : (
         <div className="dataset-loader">
-          <SyncLoader color="cyan" />
+          <SyncLoader color="#2d46b9" />
         </div>
       )}
       <div className="dataset-buttons">
