@@ -3,6 +3,7 @@ import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import map from "../assets/indiamap.jpg";
 import lineimg from "../assets/line.png";
 import barimg from "../assets/barchart.jpg";
+import bar2 from "../assets/bar2.png";
 import { Link } from "react-router-dom";
 function VisMenu() {
   return (
@@ -39,7 +40,7 @@ function VisMenu() {
           </Col>
           <Col className="card-container">
             <Card text="white">
-              <Card.Img alt="Card image cap" src={barimg} top width="100%" />
+              <Card.Img alt="Card image cap" src={bar2} top width="100%" />
               <Card.Body>
                 <Card.Title tag="h5">Bar Graph</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted" tag="h6">

@@ -14,13 +14,13 @@ function LineChart() {
   const [activeTab, setActiveTab] = useState("Individual");
   const [riverData, setRiverData] = useState(null);
   const [river, setRiver] = useState("ALKANANDA");
-  const [firstriver, setFirstRiver] = useState("");
-  const [secondriver, setSecondRiver] = useState("");
+  const [firstriver, setFirstRiver] = useState("ALKANANDA");
+  const [secondriver, setSecondRiver] = useState("ARPA");
   const [comparedata, setCompareData] = useState(null);
   const options = rivers;
 
   const handleChange = (val) => {
-    console.log(val);
+    //console.log(val);
     setRiver(val);
 
     // axios({
@@ -30,28 +30,28 @@ function LineChart() {
     //     rivername: val
     //   }
     // }).then((response) => {
-    //   console.log(response.data);
+    //   //console.log(response.data);
     //   refreshPage();
     // });
   };
 
   const handleChangefirst = (val) => {
-    console.log(val);
+    //console.log(val);
     setFirstRiver(val);
   };
 
   const handleChangesecond = (val) => {
-    console.log(val);
+    //console.log(val);
     setSecondRiver(val);
   };
 
   // axios.get(endpoint)
   //   .then((response) => {
   //     const data = response.data
-  //     console.log(data)
+  //     //console.log(data)
   //   })
   //   .catch(e => {
-  //     console.log(e)
+  //     //console.log(e)
   //   })
 
   //   var trace1 = data.trace1;
@@ -71,10 +71,10 @@ function LineChart() {
       .then((response) => {
         const data = response.data;
         setRiverData(data);
-        console.log(data);
+        //console.log(data);
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   }, [river]);
 
@@ -89,10 +89,10 @@ function LineChart() {
       .then((response) => {
         const comdata = response.data;
         setCompareData(comdata);
-        console.log(comdata);
+        //console.log(comdata);
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   }, [firstriver, secondriver]);
 
@@ -173,7 +173,7 @@ function LineChart() {
           ) : (
             <Container className="map-container">
               <Row className="comparehead">
-              <h1>COMPARE TWO RIVERS</h1>
+                <h1>COMPARE TWO RIVERS</h1>
               </Row>
               <Row xs={2}>
                 <Col>
@@ -198,30 +198,28 @@ function LineChart() {
                 </Col>
               </Row>
               <Row>
-                  {comparedata ? (
-                    <div
-                      className="graph-placeholder"
-                    >
-                      <Plot
-                        data={[comparedata.trace1, comparedata.trace2]}
-                        layout={{
-                          autosize: true,
-                          xaxis: {
-                            title: "Year",
-                          },
-                          yaxis: {
-                            title: "WQI",
-                          },
-                        }}
-                        useResizeHandler
-                        style={{ width: "100%", height: "100%" }}
-                      />
-                    </div>
-                  ) : (
-                    <div className="linechart-loader">
-                      <SyncLoader color="#2d46b9" />
-                    </div>
-                  )}
+                {comparedata ? (
+                  <div className="graph-placeholder">
+                    <Plot
+                      data={[comparedata.trace1, comparedata.trace2]}
+                      layout={{
+                        autosize: true,
+                        xaxis: {
+                          title: "Year",
+                        },
+                        yaxis: {
+                          title: "WQI",
+                        },
+                      }}
+                      useResizeHandler
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
+                ) : (
+                  <div className="linechart-loader">
+                    <SyncLoader color="#2d46b9" />
+                  </div>
+                )}
               </Row>
             </Container>
           )}

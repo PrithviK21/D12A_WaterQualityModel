@@ -19,12 +19,12 @@ function Heatmap() {
   }
 
   const handleChange = (val) => {
-    console.log(val);
+    //console.log(val);
     setYear(val);
   };
 
   useEffect(() => {
-    console.log(year);
+    //console.log(year);
     setHeatmapData(null);
     if (year === 0) return;
     const start = Date.now();
@@ -33,13 +33,13 @@ function Heatmap() {
       .get(endpoint)
       .then((response) => {
         const data = response.data;
-        console.log(data);
+        //console.log(data);
         setHeatmapData(data);
         const end = Date.now();
-        console.log(`Time for request: ${(end - start) / 1000}s`);
+        //console.log(`Time for request: ${(end - start) / 1000}s`);
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   }, [year]);
 

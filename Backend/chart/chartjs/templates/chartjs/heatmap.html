@@ -1,72 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>HEATMAP</title>
-</head>
+  </head>
 
-<body class="container-fluid">
+  <body class="container-fluid">
     <center class="row">
-        <h1>implementation of <b>plotlyJS</b> using <b>django</b></h1>
+      <h1>implementation of <b>plotlyJS</b> using <b>django</b></h1>
     </center>
     <hr />
     <div>
-        <div id='heatmap'></div>
+      <div id="heatmap"></div>
     </div>
 
     <script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
 
     <script>
-        var endpoint = '/heatmapapi';
+      var endpoint = "/heatmapapi";
 
-        $.ajax({
-            method: "GET",
-            url: endpoint,
-            success: function (data) {
-                drawHeatmap(data, 'heatmap');
-                console.log("drawing");
-            },
-            error: function (error_data) {
-                console.log(error_data);
-            }
-        })
+      $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function (data) {
+          drawHeatmap(data, "heatmap");
+          //console.log("drawing");
+        },
+        error: function (error_data) {
+          //console.log(error_data);
+        },
+      });
 
-        function drawHeatmap(data, id) {
-            var locations = data.locations;
-            var z = data.z;
-            var text = data.text;
-            var india_states = data.geojson;
+      function drawHeatmap(data, id) {
+        var locations = data.locations;
+        var z = data.z;
+        var text = data.text;
+        var india_states = data.geojson;
 
-            var data = [{
-                type: 'choropleth',
-                locationmode: 'geojson-id',
-                geojson : india_states,
-                locations: locations,
-                z: z,
-                text: text,
-                hoverinfo: "text + z",
-                colorscale: "Blues"
-            }];
+        var data = [
+          {
+            type: "choropleth",
+            locationmode: "geojson-id",
+            geojson: india_states,
+            locations: locations,
+            z: z,
+            text: text,
+            hoverinfo: "text + z",
+            colorscale: "Blues",
+          },
+        ];
 
+        var layout = {
+          title: "2018 WQI by State",
+          geo: {
+            fitbounds: "locations",
+            visible: false,
+          },
+        };
 
-            var layout = {
-                title: '2018 WQI by State',
-                geo: {
-                    fitbounds: "locations",
-                    visible: false,
-                }
-            };
-
-            Plotly.newPlot(heatmap, data, layout, { showLink: false });
-        }
-
+        Plotly.newPlot(heatmap, data, layout, { showLink: false });
+      }
     </script>
-</body>
-
+  </body>
 </html>

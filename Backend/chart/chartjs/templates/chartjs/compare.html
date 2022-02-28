@@ -38,18 +38,18 @@
         url: endpoint,
         success: function (data) {
           drawCompareLineGraph(data, "compare");
-          console.log("drawing");
+          //console.log("drawing");
         },
         error: function (error_data) {
-          console.log(error_data);
+          //console.log(error_data);
         },
       });
 
       function drawCompareLineGraph(data, id) {
         var labels = data.labels;
-        console.log(labels);
+        //console.log(labels);
         var datasets = data.datasets;
-        console.log(datasets);
+        //console.log(datasets);
         var ctx = document.getElementById(id).getContext("2d");
         var chart = new Chart(ctx, {
           // The type of chart we want to create

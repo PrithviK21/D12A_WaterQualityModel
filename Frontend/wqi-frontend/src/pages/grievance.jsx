@@ -27,17 +27,17 @@ function Grievance() {
       .then(
         function (response) {
           setSent(true);
-          console.log("SUCCESS!", response.status, response.text);
+          //console.log("SUCCESS!", response.status, response.text);
         },
         function (error) {
-          console.log("FAILED...", error);
+          //console.log("FAILED...", error);
         }
       );
     e.preventDefault();
-    console.log(`Hello CPCB,\n
-    ${name} has used our website, Jalrakshan, to issue a complaint/suggestion as follows:\n
-    ${msg}\n
-    Their provided email is: ${email}`);
+    // console.log(`Hello CPCB,\n
+    // ${name} has used our website, Jalrakshan, to issue a complaint/suggestion as follows:\n
+    // ${msg}\n
+    // Their provided email is: ${email}`);
   };
   return !sent ? (
     <Container className="grievance">

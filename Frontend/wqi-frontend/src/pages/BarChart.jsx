@@ -20,7 +20,7 @@ function LineChart() {
   }
 
   const handleChange = (val) => {
-    console.log(val);
+    //console.log(val);
     setYear(val);
 
     // axios({
@@ -30,7 +30,7 @@ function LineChart() {
     //     rivername: val
     //   }
     // }).then((response) => {
-    //   console.log(response.data);
+    //   //console.log(response.data);
     //   refreshPage();
     // });
   };
@@ -44,10 +44,10 @@ function LineChart() {
       .then((response) => {
         const data = response.data;
         setWqiData(data);
-        console.log(data);
+        //console.log(data);
       })
       .catch((e) => {
-        console.log(e);
+        //console.log(e);
       });
   }, [year]);
 
