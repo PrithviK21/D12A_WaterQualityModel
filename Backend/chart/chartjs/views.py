@@ -1,5 +1,7 @@
+import django
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django.http import FileResponse
 # Create your views here.
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -288,7 +290,15 @@ class ModelRiverData(APIView):
     def post(self, response):
         print(response)
 
-
+class GetDatasetAsPDF(APIView):
+    
+    authentication_classes = []
+    permission_classes = []
+    def get(self, request, format=None):
+        filename = "chartjs/templates/chartjs/JalrakshanData.pdf"
+        response = FileResponse(open(filename,'rb'), content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="Jalrakshan_CPCB_data"'
+        return response
 class Dataset(APIView):
     authentication_classes = []
     permission_classes = []

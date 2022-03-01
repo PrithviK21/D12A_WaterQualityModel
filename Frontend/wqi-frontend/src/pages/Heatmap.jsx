@@ -8,15 +8,15 @@ import { SyncLoader } from "react-spinners";
 
 const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
+const options = [{ name: "--Select a year--", value: 0 }];
 
+for (let i = 2008; i <= 2030; i++) {
+  options.push({ name: i, value: i });
+}
+console.log(options[1]);
 function Heatmap() {
   const [heatmapData, setHeatmapData] = useState([]);
   const [year, setYear] = useState(0);
-  const options = [{ name: "--Select a year--", value: 0 }];
-
-  for (let i = 2008; i <= 2030; i++) {
-    options.push({ name: i, value: i });
-  }
 
   const handleChange = (val) => {
     //console.log(val);

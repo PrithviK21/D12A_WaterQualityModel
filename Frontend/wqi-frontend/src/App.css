@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;700;800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -42,15 +42,20 @@ body {
 .nav-item {
   border-radius: 20px;
   transition: 0.1s ease;
+  padding: 0.7em 1em;
 }
 
+.nav-item span {
+  font-family: "Montserrat";
+}
 .header-links li:hover,
 .nav-item:hover {
-  padding: 0.2em 0.5em;
+  /* padding: 0.2em 0.5em; */
   transition: 0.2s ease;
-  background-color: rgba(0, 0, 0, 0.637);
+  background-color: rgba(0, 0, 0, 0.473);
   /* transform: scale(1.1); */
   color: white;
+  cursor: pointer;
 }
 .navbar-nav {
   align-items: center;
@@ -125,13 +130,18 @@ a:active {
   border-radius: 50px 20px 50px 20px;
   width: 100%;
 }
+.text-container * {
+  font-family: "Montserrat";
+}
 .text-container > h1 {
   font-size: 4em;
   padding-bottom: 0.5em;
+  font-weight: 500;
 }
 
 .text-container > p {
   padding-bottom: 1em;
+  font-weight: 500;
 }
 .big-text {
   font-weight: 400;
@@ -343,6 +353,7 @@ footer p {
   .hero-text {
     font-size: 3rem;
     text-align: center;
+    font-family: "Montserrat";
   }
 
   .text-container {
@@ -372,10 +383,19 @@ footer p {
   }
 
   .bruhRow {
+    height: auto;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 4rem 0;
   }
-
+  .bruhRow:nth-child(2) {
+    flex-direction: column;
+  }
+  .home-img-container {
+    width: 80%;
+  }
   .text-container h1 {
     font-size: 24px;
   }
@@ -572,16 +592,47 @@ footer p {
   width: 100%;
   padding: 2rem 1rem;
 }
-
+.download-btn {
+  position: absolute;
+  right: 3%;
+  top: 120px;
+  font-size: 0.8rem;
+  font-family: "Montserrat";
+  background-color: #2d46b9;
+}
+.download-btn img {
+  width: 25px;
+}
+.download-btn p {
+  margin: 0;
+  display: inline;
+}
+.download-btn:hover {
+  background-color: #2e86b6;
+}
+.download-btn:focus {
+  border: none;
+  box-shadow: none;
+  background-color: #1e3163;
+}
 .next-page,
 .prev-page {
   background-color: #2d46b9;
   border: none;
+  font-family: "Montserrat";
 }
 
 .dataset-header {
   text-align: center;
   margin-bottom: 1rem;
+  font-family: "Montserrat";
+  font-weight: 600;
+  border-radius: 20px;
+  background-color: #1e3163;
+  padding: 1rem;
+  width: 33%;
+  color: white;
+  margin: 1rem auto;
 }
 
 .dataset-buttons {
@@ -615,5 +666,16 @@ footer p {
   .grievance {
     width: 90%;
     height: calc(100vh - 92px - 172px);
+  }
+  .download-btn p {
+    display: none;
+  }
+  .download-btn img {
+    width: 40px;
+  }
+}
+@media (max-width: 500px) {
+  .dataset-header {
+    font-size: 1rem;
   }
 }

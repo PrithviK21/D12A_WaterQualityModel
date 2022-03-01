@@ -7,29 +7,29 @@ function Header() {
   return (
     <Navbar variant="dark" expand="md">
       <Link to="/">
-        <Navbar.Brand href="">Jalrakshan</Navbar.Brand>
+        <Navbar.Brand>Jalrakshan</Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggle" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Item>
-            <Link to="/vis">
-              <Nav.Link href="/">VISUALISATION</Nav.Link>
-            </Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Link to="/prevention">
-              <Nav.Link href="/">PREVENTION</Nav.Link>
-            </Link>
-          </Nav.Item>
+          <Link to="/vis">
+            <Nav.Item>
+              <span>VISUALISATION</span>
+            </Nav.Item>
+          </Link>
+          <Link to="/prevention">
+            <Nav.Item>
+              <span>PREVENTION</span>
+            </Nav.Item>
+          </Link>
           <Link to="/dataset">
             <Nav.Item>
-              <Nav.Link href="/">DATASET</Nav.Link>
+              <span>DATASET</span>
             </Nav.Item>
           </Link>
           <Link to="/about">
             <Nav.Item>
-              <Nav.Link href="/">ABOUT US</Nav.Link>
+              <span>ABOUT US</span>
             </Nav.Item>
           </Link>
         </Nav>

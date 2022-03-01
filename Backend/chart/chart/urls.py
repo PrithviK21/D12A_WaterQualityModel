@@ -30,4 +30,5 @@ urlpatterns = [
     path('modelriverapi/', views.ModelRiverData.as_view()),
     path('countwqiapi/', views.CountWQIData.as_view()),
     path('dataset/', views.Dataset.as_view()),
+    path('pdfdata/', views.GetDatasetAsPDF.as_view()),
 ]
