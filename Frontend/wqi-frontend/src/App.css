@@ -622,7 +622,7 @@ footer p {
   font-family: "Montserrat";
 }
 
-.dataset-header {
+.page-header {
   text-align: center;
   margin-bottom: 1rem;
   font-family: "Montserrat";
@@ -632,7 +632,9 @@ footer p {
   padding: 1rem;
   width: 33%;
   color: white;
+  color: rgb(183, 225, 240);
   margin: 1rem auto;
+  text-transform: capitalize;
 }
 
 .dataset-buttons {
@@ -675,7 +677,7 @@ footer p {
   }
 }
 @media (max-width: 500px) {
-  .dataset-header {
+  .page-header {
     font-size: 1rem;
   }
 }

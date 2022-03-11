@@ -127,7 +127,7 @@ function LineChart() {
           {activeTab === "Individual" ? (
             <Container className="map-container">
               <Row className="comparehead">
-                <h1>LINE GRAPH</h1>
+                <h1>Line Graph</h1>
               </Row>
               <Row xs={1}>
                 <Col>
@@ -173,7 +173,7 @@ function LineChart() {
           ) : (
             <Container className="map-container">
               <Row className="comparehead">
-                <h1>COMPARE TWO RIVERS</h1>
+                <h1>Compare Two Rivers</h1>
               </Row>
               <Row xs={2}>
                 <Col>

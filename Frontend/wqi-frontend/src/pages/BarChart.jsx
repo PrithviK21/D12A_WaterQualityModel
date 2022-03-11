@@ -53,6 +53,7 @@ function LineChart() {
 
   return (
     <div>
+      <h2 className="page-header">Bar Chart</h2>
       <Container className="map-container">
         <Row xs={1}>
           <Col>

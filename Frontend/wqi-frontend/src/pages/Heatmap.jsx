@@ -46,7 +46,7 @@ function Heatmap() {
   return (
     <div>
       <Container className="map-container">
-        <h1>HEATMAP</h1>
+        <h2 className="page-header">Heatmap</h2>
         <Row xs={1}>
           <Col>
             <SelectSearch

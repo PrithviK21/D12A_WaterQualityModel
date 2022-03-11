@@ -71,7 +71,7 @@ function Dataset() {
   return (
     <Container className="dataset-table-wrapper">
       <div className="dataset-title-container">
-        <h2 className="dataset-header">Dataset</h2>
+        <h2 className="page-header">Dataset</h2>
         <Button className="download-btn" onClick={downloadData}>
           <img src={pdficon} alt="PDF icon" /> <p>Download as PDF</p>
         </Button>
