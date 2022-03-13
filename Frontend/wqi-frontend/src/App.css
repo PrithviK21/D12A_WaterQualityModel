@@ -72,7 +72,8 @@ a:active {
 }
 .hero-container {
   height: 100vh;
-  background-image: url(./assets/pollution2.png);
+  background-image: url(./assets/indiariver.jpg);
+  filter: brightness(0.9);
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -80,6 +81,9 @@ a:active {
 }
 .clean-hero-container {
   background-image: url(./assets/cleanwater.jpg);
+}
+.dirty-hero-container {
+  background-image: url(./assets/pollution2.png);
 }
 
 .hero-text {
@@ -527,6 +531,7 @@ footer p {
 .grievance {
   width: 50%;
   background-color: #cddeff;
+  background: linear-gradient(#2d47b957, #1e326383);
   padding: 5%;
   height: calc(100vh - 170px);
   display: flex;
@@ -534,9 +539,22 @@ footer p {
   align-items: center;
   flex-direction: column;
 }
-
+.grievance * {
+  font-family: "Montserrat";
+}
+.grievance .page-header {
+  width: auto;
+}
+.grievance button {
+  background-color: #1e3163;
+}
 .detgrie {
   margin-top: 4%;
+}
+.requestpdf-text {
+  margin: 1em 0;
+  text-align: justify;
+  font-weight: 500;
 }
 
 .condition-table {
@@ -594,11 +612,14 @@ footer p {
 }
 .download-btn {
   position: absolute;
+  padding: 0.4rem;
   right: 3%;
   top: 120px;
   font-size: 0.8rem;
   font-family: "Montserrat";
   background-color: #2d46b9;
+  border-radius: 10px;
+  transition: 0.1s ease;
 }
 .download-btn img {
   width: 25px;
@@ -608,7 +629,7 @@ footer p {
   display: inline;
 }
 .download-btn:hover {
-  background-color: #2e86b6;
+  background-color: #133c52;
 }
 .download-btn:focus {
   border: none;
@@ -635,8 +656,28 @@ footer p {
   color: rgb(183, 225, 240);
   margin: 1rem auto;
   text-transform: capitalize;
+  position: relative;
 }
-
+.dataset-header {
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+.dataset-header:hover {
+  background-color: #2d46b9;
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 5px black;
+}
+.dataset-header:active {
+  transform: translate(0px);
+  box-shadow: none;
+}
+.dataset-cpcb-link,
+.dataset-cpcb-link:visited {
+  color: #2d46b9 !important;
+}
+.dataset-cpcb-link:hover {
+  text-decoration: underline;
+}
 .dataset-buttons {
   width: 100%;
   display: flex;
@@ -667,7 +708,7 @@ footer p {
 @media (max-width: 900px) {
   .grievance {
     width: 90%;
-    height: calc(100vh - 92px - 172px);
+    height: auto;
   }
   .download-btn p {
     display: none;

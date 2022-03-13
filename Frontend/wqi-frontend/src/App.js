@@ -21,6 +21,7 @@ function App() {
         <Route path="dataset" element={<Pages.Dataset />} />
         <Route path="about" element={<Pages.AboutUs />} />
         <Route path="grievance" element={<Pages.Grievance />} />
+        <Route path="requestpdf" element={<Pages.RequestPDF />} />
       </Routes>
       <Footer />
     </div>

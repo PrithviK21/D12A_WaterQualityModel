@@ -4,7 +4,7 @@ import { Button, Row, Col, Container, Form } from "react-bootstrap";
 import emailjs, { init } from "@emailjs/browser";
 init(process.env.REACT_APP_EMAIL_API);
 
-function Grievance() {
+function RequestPDF() {
   const [name, setName] = useState("");
   const [msg, setMsg] = useState("");
   const [email, setEmail] = useState("");
@@ -20,15 +20,15 @@ function Grievance() {
     emailjs
       .send(
         "jalrakshan_email",
-        "complaint_form",
+        "requestpdf_template",
         templateParams,
         process.env.REACT_APP_EMAIL_API
       )
       .then(
         function (response) {
           setSent(true);
-          alert("Your grivance has been recorded!");
           //console.log("SUCCESS!", response.status, response.text);
+          alert("Your request has been received!");
         },
         function (error) {
           //console.log("FAILED...", error);
@@ -46,7 +46,20 @@ function Grievance() {
     </Container>
   ) : (
     <Container className="grievance">
-      <h3 className="page-header">Grievance Form</h3>
+      <h3 className="page-header">Request a PDF of our Dataset</h3>
+      <p className="requestpdf-text">
+        We created this dataset after cleaning, scaling, and transforming data
+        supplied by{" "}
+        <a
+          href="http://www.cpcbenvis.nic.in/water_quality_data.html#"
+          target="_blank"
+          className="dataset-cpcb-link"
+        >
+          CPCB ENVIS
+        </a>
+        . Feel free to use this dataset while crediting both CPCB and
+        Jalrakshan.
+      </p>
       <Form onSubmit={sendEmail}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Row xs={1} md={2}>
@@ -69,21 +82,21 @@ function Grievance() {
               />
             </Col>
           </Row>
-          <Form.Label className="detgrie">Grievance/Suggestion *</Form.Label>
+          <Form.Label className="detgrie">
+            Why would you like a copy of our Dataset? *
+          </Form.Label>
           <Form.Control
             required
             as="textarea"
             rows={3}
-            placeholder="Enter your grievance/suggestion here"
+            placeholder="Enter your reason for requesting our dataset"
             onChange={(e) => setMsg(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </Form>
     </Container>
   );
 }
 
-export default Grievance;
+export default RequestPDF;

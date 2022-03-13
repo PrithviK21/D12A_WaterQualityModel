@@ -7,7 +7,7 @@ import BarChart from "./pages/BarChart";
 import AboutUs from "./pages/AboutUs";
 import Dataset from "./pages/Dataset";
 import Grievance from "./pages/Grievance";
-
+import RequestPDF from "./pages/RequestPDF";
 export {
   Homepage,
   VisMenu,
@@ -18,4 +18,5 @@ export {
   AboutUs,
   Dataset,
   Grievance,
+  RequestPDF,
 };

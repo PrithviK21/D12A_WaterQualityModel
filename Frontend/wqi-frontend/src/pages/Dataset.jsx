@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Container, Table, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import {
+  Container,
+  Table,
+  Button,
+  Popover,
+  OverlayTrigger,
+} from "react-bootstrap";
 import axios from "axios";
 import { SyncLoader } from "react-spinners";
 import pdficon from "../assets/pdficon.png";
@@ -19,11 +26,11 @@ function Dataset() {
         //console.log(e);
       });
   };
-  const downloadData = () => {
-    let link = document.createElement("a");
-    link.href = "http://127.0.0.1:8000/pdfdata/";
-    link.click();
-  };
+  // const downloadData = () => {
+  //   let link = document.createElement("a");
+  //   link.href = "http://127.0.0.1:8000/pdfdata/";
+  //   link.click();
+  // };
   useEffect(() => {
     /* added a loader and later optimized the backend as well so loader not too necessary
       to set it back to null, remove if you think its not needed */
@@ -67,14 +74,33 @@ function Dataset() {
       setCounter(counter - 1);
     }
   };
-
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">Our Dataset</Popover.Header>
+      <Popover.Body>
+        This is a dataset we created using data from{" "}
+        <a
+          href="http://www.cpcbenvis.nic.in/water_quality_data.html#"
+          target="_blank"
+          className="dataset-cpcb-link"
+        >
+          CPCB ENVIS
+        </a>
+        . Feel free to request our dataset using the button on the right
+      </Popover.Body>
+    </Popover>
+  );
   return (
     <Container className="dataset-table-wrapper">
       <div className="dataset-title-container">
-        <h2 className="page-header">Dataset</h2>
-        <Button className="download-btn" onClick={downloadData}>
-          <img src={pdficon} alt="PDF icon" /> <p>Download as PDF</p>
-        </Button>
+        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+          <h2 className="page-header dataset-header">Dataset</h2>
+        </OverlayTrigger>
+        <Link to="/requestpdf">
+          <div className="download-btn">
+            <img src={pdficon} alt="PDF icon" /> <p>Request a PDF</p>
+          </div>
+        </Link>
       </div>
       <div className="dataset-buttons">
         <Button id="previous" onClick={previous} className="prev-page">
