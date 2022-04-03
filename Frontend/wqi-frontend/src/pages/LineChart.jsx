@@ -65,7 +65,8 @@ function LineChart() {
   //       Plotly.newPlot(graphplaceholder, data, layout);
 
   useEffect(() => {
-    const endpoint = "/modelriverapi/?rivername=" + river;
+    const endpoint =
+      "https://jalrakshan.heroku.app/modelriverapi/?rivername=" + river;
     axios
       .get(endpoint)
       .then((response) => {
@@ -80,7 +81,10 @@ function LineChart() {
 
   useEffect(() => {
     const endpoint =
-      "/compareapi/?comparerivername=" + firstriver + "," + secondriver;
+      "https://jalrakshan.heroku.app/compareapi/?comparerivername=" +
+      firstriver +
+      "," +
+      secondriver;
     axios
       .get(endpoint)
       .then((response) => {
