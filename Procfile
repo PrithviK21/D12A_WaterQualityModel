@@ -1,1 +1,1 @@
-web: gunicorn chart.wsgi
+web: gunicorn chart/chart.wsgi
