@@ -66,7 +66,7 @@ function LineChart() {
 
   useEffect(() => {
     const endpoint =
-      "https://jalrakshan.heroku.app/modelriverapi/?rivername=" + river;
+      "https://jalrakshan.herokuapp.com/modelriverapi/?rivername=" + river;
     axios
       .get(endpoint)
       .then((response) => {
@@ -81,7 +81,7 @@ function LineChart() {
 
   useEffect(() => {
     const endpoint =
-      "https://jalrakshan.heroku.app/compareapi/?comparerivername=" +
+      "https://jalrakshan.herokuapp.com/compareapi/?comparerivername=" +
       firstriver +
       "," +
       secondriver;

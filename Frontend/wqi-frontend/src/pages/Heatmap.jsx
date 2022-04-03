@@ -27,7 +27,8 @@ function Heatmap() {
     //console.log(year);
     setHeatmapData(null);
     if (year === 0) return;
-    const endpoint = "https://jalrakshan.heroku.app/heatmapapi/?year=" + year;
+    const endpoint =
+      "https://jalrakshan.herokuapp.com/heatmapapi/?year=" + year;
     axios
       .get(endpoint)
       .then((response) => {

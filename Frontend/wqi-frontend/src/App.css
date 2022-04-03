@@ -261,6 +261,7 @@ a:active {
   border-radius: 2rem;
   align-items: center;
   justify-content: center;
+  font-size: 1rem;
 }
 ul.nav {
   width: 60%;
@@ -283,6 +284,11 @@ ul.nav li {
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
 }
+@media (max-width: 768px) {
+  ul.nav li {
+    font-size: 0.7rem;
+  }
+}
 ul.nav li:nth-child(2) {
   border-radius: 0;
   border-bottom-right-radius: 2rem;
@@ -303,7 +309,7 @@ ul.nav li.active {
 .barchart-loader {
   background-color: white;
   height: 450px;
-  width: 700px;
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -380,6 +386,7 @@ footer p {
   .map-container {
     margin: 1em auto;
     height: auto;
+    overflow-x: hidden;
   }
   .map-placeholder {
     width: 100%;

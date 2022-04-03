@@ -38,7 +38,8 @@ function LineChart() {
   useEffect(() => {
     setWqiData(null);
     if (year === 0) return;
-    const endpoint = "https://jalrakshan.heroku.app/countwqiapi/?year=" + year;
+    const endpoint =
+      "https://jalrakshan.herokuapp.com/countwqiapi/?year=" + year;
     axios
       .get(endpoint)
       .then((response) => {
@@ -98,6 +99,7 @@ function LineChart() {
                     },
                   }}
                   useResizeHandler
+                  style={{ width: "95%", height: "100%" }}
                 />
               </div>
             ) : (

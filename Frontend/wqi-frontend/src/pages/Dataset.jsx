@@ -15,7 +15,7 @@ function Dataset() {
   const [counter, setCounter] = useState(0);
 
   const getData = (val) => {
-    const endpoint = "https://jalrakshan.heroku.app/dataset/?counter=" + val;
+    const endpoint = "https://jalrakshan.herokuapp.com/dataset/?counter=" + val;
     axios
       .get(endpoint)
       .then((response) => {
