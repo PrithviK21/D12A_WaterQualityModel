@@ -15,7 +15,7 @@ function Dataset() {
   const [counter, setCounter] = useState(0);
 
   const getData = (val) => {
-    const endpoint = "http://127.0.0.1:8000/dataset/?counter=" + val;
+    const endpoint = "/dataset/?counter=" + val;
     axios
       .get(endpoint)
       .then((response) => {
@@ -28,7 +28,7 @@ function Dataset() {
   };
   // const downloadData = () => {
   //   let link = document.createElement("a");
-  //   link.href = "http://127.0.0.1:8000/pdfdata/";
+  //   link.href = "/pdfdata/";
   //   link.click();
   // };
   useEffect(() => {

@@ -28,7 +28,7 @@ function Heatmap() {
     setHeatmapData(null);
     if (year === 0) return;
     const start = Date.now();
-    const endpoint = "http://127.0.0.1:8000/heatmapapi/?year=" + year;
+    const endpoint = "/heatmapapi/?year=" + year;
     axios
       .get(endpoint)
       .then((response) => {

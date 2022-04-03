@@ -25,7 +25,7 @@ function LineChart() {
 
     // axios({
     //   method: 'get',
-    //   url: 'http://127.0.0.1:8000/api/?rivername=GANGA',
+    //   url: '/api/?rivername=GANGA',
     //   data: {
     //     rivername: val
     //   }
@@ -65,7 +65,7 @@ function LineChart() {
   //       Plotly.newPlot(graphplaceholder, data, layout);
 
   useEffect(() => {
-    const endpoint = "http://127.0.0.1:8000/modelriverapi/?rivername=" + river;
+    const endpoint = "/modelriverapi/?rivername=" + river;
     axios
       .get(endpoint)
       .then((response) => {
@@ -80,10 +80,7 @@ function LineChart() {
 
   useEffect(() => {
     const endpoint =
-      "http://127.0.0.1:8000/compareapi/?comparerivername=" +
-      firstriver +
-      "," +
-      secondriver;
+      "/compareapi/?comparerivername=" + firstriver + "," + secondriver;
     axios
       .get(endpoint)
       .then((response) => {

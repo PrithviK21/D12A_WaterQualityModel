@@ -25,7 +25,7 @@ function LineChart() {
 
     // axios({
     //   method: 'get',
-    //   url: 'http://127.0.0.1:8000/api/?rivername=GANGA',
+    //   url: '/api/?rivername=GANGA',
     //   data: {
     //     rivername: val
     //   }
@@ -38,7 +38,7 @@ function LineChart() {
   useEffect(() => {
     setWqiData(null);
     if (year === 0) return;
-    const endpoint = "http://127.0.0.1:8000/countwqiapi/?year=" + year;
+    const endpoint = "/countwqiapi/?year=" + year;
     axios
       .get(endpoint)
       .then((response) => {
