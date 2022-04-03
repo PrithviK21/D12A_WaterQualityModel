@@ -81,7 +81,8 @@ function Dataset() {
         This is a dataset we created using data from{" "}
         <a
           href="http://www.cpcbenvis.nic.in/water_quality_data.html#"
-          target="_blank"
+          target={"_blank"}
+          rel={"noreferrer"}
           className="dataset-cpcb-link"
         >
           CPCB ENVIS

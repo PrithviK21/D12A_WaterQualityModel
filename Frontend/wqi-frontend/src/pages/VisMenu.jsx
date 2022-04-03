@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import map from "../assets/indiamap.jpg";
 import lineimg from "../assets/line.png";
-import barimg from "../assets/barchart.jpg";
 import bar2 from "../assets/bar2.png";
 import { Link } from "react-router-dom";
 function VisMenu() {
@@ -55,49 +54,6 @@ function VisMenu() {
         </Row>
       </Container>
     </div>
-    // <div>
-    //   {/* <div className="menu-container"> */}
-    //   <Row>
-    //     <div className="menu-item">
-    //       <Card text='white'>
-    //         <Card.Img alt="Card image cap" src={map} top width="100%" />
-    //         <Card.Body>
-    //           <Card.Title tag="h5">Heatmap</Card.Title>
-    //           <Card.Subtitle className="mb-2 text-muted" tag="h6">
-    //             A heatmap of India, showing WQIs per state
-    //           </Card.Subtitle>
-    //           <Button>Go</Button>
-    //         </Card.Body>
-    //       </Card>
-    //     </div>
-
-    //     <div className="menu-item">
-    //       <Card text='white'>
-    //         <Card.Img alt="Card image cap" src={lineimg} top width="100%" />
-    //         <Card.Body>
-    //           <Card.Title tag="h5">Card title</Card.Title>
-    //           <Card.Subtitle className="mb-2 text-muted" tag="h6">
-    //             Card subtitle
-    //           </Card.Subtitle>
-    //           <Button>Button</Button>
-    //         </Card.Body>
-    //       </Card>
-    //     </div>
-    //     <div className="menu-item">
-    //       <Card text='white'>
-    //         <Card.Img alt="Card image cap" src={barimg} top width="100%" />
-    //         <Card.Body>
-    //           <Card.Title tag="h5">Card title</Card.Title>
-    //           <Card.Subtitle className="mb-2 text-muted" tag="h6">
-    //             Card subtitle
-    //           </Card.Subtitle>
-    //           <Button>Button</Button>
-    //         </Card.Body>
-    //       </Card>
-    //     </div>
-    //     {/* </div> */}
-    //   </Row>
-    // </div>
   );
 }
 

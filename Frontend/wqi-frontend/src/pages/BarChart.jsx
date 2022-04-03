@@ -135,35 +135,35 @@ function LineChart() {
                 <td>A</td>
                 <td>Excellent</td>
                 <td>
-                  <span class="condition-A"></span>
+                  <span className="condition-A"></span>
                 </td>
               </tr>
               <tr>
                 <td>B</td>
                 <td>Good</td>
                 <td>
-                  <span class="condition-B"></span>
+                  <span className="condition-B"></span>
                 </td>
               </tr>
               <tr>
                 <td>C</td>
                 <td>Okay</td>
                 <td>
-                  <span class="condition-C"></span>
+                  <span className="condition-C"></span>
                 </td>
               </tr>
               <tr>
                 <td>D</td>
                 <td>Bad</td>
                 <td>
-                  <span class="condition-D"></span>
+                  <span className="condition-D"></span>
                 </td>
               </tr>
               <tr>
                 <td>E</td>
                 <td>Worse</td>
                 <td>
-                  <span class="condition-E"></span>
+                  <span className="condition-E"></span>
                 </td>
               </tr>
             </tbody>

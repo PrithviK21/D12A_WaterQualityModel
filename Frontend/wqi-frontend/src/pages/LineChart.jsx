@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import SelectSearch, { fuzzySearch } from "react-select-search";
 import "../select-search.css";
 import rivers from "../rivers";

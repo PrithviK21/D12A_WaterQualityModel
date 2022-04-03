@@ -1,4 +1,4 @@
-export default [
+const bruh = [
   { name: "ALKANANDA", value: "ALKANANDA" },
   { name: "AMRAVATI", value: "AMRAVATI" },
   { name: "ARKAVATHI", value: "ARKAVATHI" },
@@ -148,3 +148,4 @@ export default [
   { name: "YAGACHI", value: "YAGACHI" },
   { name: "YAMUNA", value: "YAMUNA" },
 ];
+export default bruh;

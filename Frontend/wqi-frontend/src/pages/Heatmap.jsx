@@ -27,7 +27,6 @@ function Heatmap() {
     //console.log(year);
     setHeatmapData(null);
     if (year === 0) return;
-    const start = Date.now();
     const endpoint = "/heatmapapi/?year=" + year;
     axios
       .get(endpoint)
@@ -35,8 +34,6 @@ function Heatmap() {
         const data = response.data;
         //console.log(data);
         setHeatmapData(data);
-        const end = Date.now();
-        //console.log(`Time for request: ${(end - start) / 1000}s`);
       })
       .catch((e) => {
         //console.log(e);
