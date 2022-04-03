@@ -1,1 +1,1 @@
-web: gunicorn chart/chart.wsgi
+web: gunicorn --chdir Backend/chart chart.wsgi
