@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>chatsjs</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body class="container-fluid">
+    <center class="row">
+      <h1>implementation of <b>jalrakshanback</b> using <b>django</b></h1>
+    </center>
+    <hr />
+    <div class="row">
+      <div class="col-md-6">
+        <canvas id="compare"></canvas>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script>
+      var endpoint = "/compareapi";
+
+      $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function (data) {
+          drawCompareLineGraph(data, "compare");
+          //console.log("drawing");
+        },
+        error: function (error_data) {
+          //console.log(error_data);
+        },
+      });
+
+      function drawCompareLineGraph(data, id) {
+        var labels = data.labels;
+        //console.log(labels);
+        var datasets = data.datasets;
+        //console.log(datasets);
+        var ctx = document.getElementById(id).getContext("2d");
+        var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: "line",
+
+          // The data for our dataset
+          data: {
+            labels: labels,
+            datasets: datasets,
+          },
+
+          // Configuration options go here
+          options: {
+            legend: {
+              display: true,
+              position: "top",
+              labels: {
+                boxWidth: 80,
+                fontColor: "black",
+              },
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
