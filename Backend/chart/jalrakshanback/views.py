@@ -121,9 +121,9 @@ class HeatMapData(APIView):
     authentication_classes = []
     permission_classes = []
 
-    df = pd.read_excel("jalrakshanback\\templates\\jalrakshanback\\wqilimitstate.xlsx")
+    df = pd.read_excel("jalrakshanback/templates/jalrakshanback/wqilimitstate.xlsx")
     india_states = json.load(
-        open("jalrakshanback\\templates\\jalrakshanback\\states_india.geojson"))
+        open("jalrakshanback/templates/jalrakshanback/states_india.geojson"))
 
     df_year = pd.DataFrame(columns=['STATE', 'ID', 'WQI'])
     df_year['STATE'] = df['STATE'].unique()
@@ -138,7 +138,7 @@ class HeatMapData(APIView):
 
         def predict_wqi(state):
             model = joblib.load(
-                f'jalrakshanback\\templates\\jalrakshanback\\state_models\\{state}.pkl', mmap_mode='r')
+                f'jalrakshanback/templates/jalrakshanback/state_models/{state}.pkl', mmap_mode='r')
             return model.predict([[year]])[0]
 
         def capitalizeFirst(state):
