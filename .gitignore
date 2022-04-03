@@ -3,5 +3,8 @@
 Backend/chart/jalrakshanback/migrations
 Backend/chart/jalrakshanback/__pycache__
 Backend/chart/chart/__pycache__
+Frontend/wqi-frontend/
 Frontend/wqi-frontend/.env
+Frontend/wqi-frontend/build
+Frontend/wqi-frontend/node_modules
 *.pyc
