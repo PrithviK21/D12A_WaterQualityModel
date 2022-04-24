@@ -130,8 +130,7 @@ class HeatMapData(APIView):
 
     state_id_map = {}
     for feature in india_states["features"]:
-        feature["id"] = feature["properties"]["state_code"]
-        state_id_map[feature["properties"]["st_nm"]] = feature["id"]
+        state_id_map[feature["properties"]["st_nm"]] = feature["properties"]["state_code"]
 
     def get(self, request, format=None):
         year = int(request.GET.get('year'))
@@ -161,8 +160,7 @@ class HeatMapData(APIView):
         data = {
             "locations": id,
             "z": wqi,
-            "text": state,
-            "geojson": self.india_states
+            "text": state
         }
 
         return Response(data)
