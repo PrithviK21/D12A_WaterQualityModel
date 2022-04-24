@@ -158,11 +158,14 @@ class HeatMapData(APIView):
         wqi = np.array(self.df_year['WQI'])
         state = np.array(self.df_year['STATE'])
 
+        # print(self.india_states)
+        # print(self.india_states['features'][35])
+        print("Sucess")
         data = {
             "locations": id,
             "z": wqi,
             "text": state,
-            "geojson": self.india_states
+            # "geojson": self.india_states
         }
 
         return Response(data)

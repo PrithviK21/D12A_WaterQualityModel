@@ -5,6 +5,7 @@ import "../select-search.css";
 import axios from "axios";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { SyncLoader } from "react-spinners";
+import geojson from "../assets/states_india.json";
 
 const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
@@ -17,6 +18,7 @@ console.log(options[1]);
 function Heatmap() {
   const [heatmapData, setHeatmapData] = useState([]);
   const [year, setYear] = useState(0);
+  console.log(geojson)
 
   const handleChange = (val) => {
     //console.log(val);
@@ -33,7 +35,11 @@ function Heatmap() {
       .get(endpoint)
       .then((response) => {
         const data = response.data;
-        //console.log(data);
+        // console.log(data.geojson.features);
+        // console.log(typeof(data.geojson) == typeof(geojson))
+        // for(let i = 0; i < data.geojson.features.length; i++){
+        //   console.log(data.geojson.features[i].id, geojson.features[i].id)
+        // }
         setHeatmapData(data);
         const end = Date.now();
         //console.log(`Time for request: ${(end - start) / 1000}s`);
@@ -42,6 +48,14 @@ function Heatmap() {
         //console.log(e);
       });
   }, [year]);
+
+  useEffect(() => {
+    console.log(geojson.features)
+    for(let i = 0; i < geojson.features.length; i++){
+      geojson.features[i].id = geojson.features[i].properties.state_code
+    }
+    console.log(geojson)
+  }, [])
 
   return (
     <div>
@@ -65,7 +79,8 @@ function Heatmap() {
               {
                 type: "choropleth",
                 locationmode: "geojson-id",
-                geojson: heatmapData.geojson,
+                // geojson: heatmapData.geojson,
+                geojson: geojson,
                 locations: heatmapData.locations,
                 z: heatmapData.z,
                 text: heatmapData.text,
