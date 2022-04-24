@@ -2,8 +2,9 @@
   "name": "wqi-frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000/",
+  "proxy": "https://jalrakshan.herokuapp.com",
   "dependencies": {
+    "@emailjs/browser": "^3.4.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -13,11 +14,13 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
+    "react-onclickoutside": "^6.12.1",
     "react-plotly.js": "^2.5.1",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
     "react-select-search": "^3.0.9",
+    "react-spinners": "^0.11.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

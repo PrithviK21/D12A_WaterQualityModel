@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+  <!-- Plotly chart will be drawn inside this div -->
+  <div id="plotly-div"></div>
+    <script>
+    trace1 = {
+  uid: '2b3561', 
+  type: 'histogram', 
+  x: [0, 1, 1, 2, 2, 2, 3, 3, 4], 
+  xbins: {
+    end: 4.5, 
+    size: 1, 
+    start: -1.5
+  }, 
+  marker: {
+    cmax: 5, 
+    cmin: 0, 
+    color: [0, 1, 2, 3, 4, 5], 
+    colorscale: 'Earth'
+  }
+};
+data = [trace1];
+layout = {
+  title: 'histogram with colorscale', 
+  width: 1202, 
+  xaxis: {
+    type: 'linear', 
+    range: [-0.5, 4.5], 
+    autorange: true
+  }, 
+  yaxis: {
+    range: [0, 3.1578947368421053], 
+    autorange: true
+  }, 
+  height: 582, 
+  autosize: true
+};
+Plotly.plot('plotly-div', {
+  data: data,
+  layout: layout
+});
+    </script>
+  </body>
+</html>
