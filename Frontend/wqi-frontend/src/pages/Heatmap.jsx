@@ -5,6 +5,7 @@ import "../select-search.css";
 import axios from "axios";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { SyncLoader } from "react-spinners";
+import geojson from "../assets/states_india.json"
 
 const Plotly = window.Plotly;
 const Plot = createPlotlyComponent(Plotly);
@@ -63,7 +64,7 @@ function Heatmap() {
               {
                 type: "choropleth",
                 locationmode: "geojson-id",
-                geojson: heatmapData.geojson,
+                geojson: geojson,
                 locations: heatmapData.locations,
                 z: heatmapData.z,
                 text: heatmapData.text,
